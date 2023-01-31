@@ -22,7 +22,10 @@ class Equipo12Controller < ApplicationController
   end
 
   def new
+    if current_usuario.admin?
     @equipo12 = Equipo12.new 
+    else 
+      redirect_to equipo12_index_url, alert: "No autorizado"
   end
 
   def create

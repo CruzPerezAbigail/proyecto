@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_062059) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_31_161706) do
   create_table "areas", primary_key: "id_area", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_062059) do
     t.index ["id_licencias"], name: "fk_rails_db6fd01638"
     t.index ["id_marcas"], name: "fk_rails_447672c699"
     t.index ["id_tipo"], name: "fk_rails_ab1eaec3c4"
+    t.index ["serie"], name: "serie_UNIQUE", unique: true
   end
 
   create_table "herramienta", primary_key: "id_herramienta", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -146,7 +147,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_062059) do
     t.string "apellidouno"
     t.string "apellidodos"
     t.string "role", default: "personal"
-    t.integer "admin", default: 0
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end

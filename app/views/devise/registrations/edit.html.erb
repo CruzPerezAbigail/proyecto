@@ -1,3 +1,16 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+<h4 class="text">Nuevo Usuario </h4>
+</div>
+ <div class="probar">
+<br>
+
 <h2>Editar contraseña <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -40,4 +53,4 @@
 
 <p>Unhappy? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Esta segur@?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Regresar", :back %>

@@ -1,7 +1,21 @@
-<%= form_with(model: area) do |form| %>
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+<h4 class="text">Área </h4>
+</div>
+ <div class="probar">
+
+
+
+ <%= form_with(model: area) do |form| %>
   <% if area.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(area.errors.count, "error") %> prohibited this area from being saved:</h2>
+      
 
       <ul>
         <% area.errors.each do |error| %>
@@ -10,15 +24,22 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :nombre, style: "display: block" %>
-    <%= form.text_field :nombre %>
+<br>
+  <div class="form-group row">
+    <%= form.label :nombre,"Nombre:", class:'col-sm-2' %>
+    <div class="col-sm-6">
+    <%= form.text_field :nombre, class:'form-control' %>
   </div>
-
-  
-
   <div>
+  <br>
+  <br>
   <button class="btn btn-info" <%= form.submit %> Guardar </button>
+  <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
   </div>
 <% end %>
+
+
+
+
+
+

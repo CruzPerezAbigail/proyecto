@@ -1,14 +1,113 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Herramienta</h1>
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<div align="center">
+<p style="color: green"><%= notice %></p>
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Herramientas</a></li>
+          <li class="breadcrumb-item active">Listar herramienta</li>
+        </ol>
+<h4>Herramienta</h4>
+
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                 
+                  <p class="card-description">
+                    
+                  </p>
+                  <div class="table-responsive pt-3">
+
+                  
+                  <table class="table table-bordered" id="tablaherramientas">
+                  <thead class="thead-blue" >
+              <tr>
+              <th></th>
+                <th scope="col">Id </th>
+                <th scope="col">NOMBRE</th>
+                
+                <th>Caracteristicas</th>
+                <th>Existencia</th>
+                <th>Estatus</th>
+                <th>Acciones</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+
 
 <div id="herramienta">
-  <% @herramienta.each do |herramientum| %>
-    <%= render herramientum %>
-    <p>
-      <%= link_to "Show this herramientum", herramientum %>
-    </p>
-  <% end %>
+<% @herramienta= Herramientum.all%>
+  <% @herramienta.each do |herramienta  | %>
+    <tr>
+    <td></td>
+<td><%= herramienta.id %></td>
+<td><%= herramienta.nombre %></td> 
+<td><%= herramienta.caracteristicas %></td> 
+<td><%= herramienta.existencia %></td> 
+<td><%= herramienta.estatus %></td> 
+<td>
+
+      <a href="<%= edit_herramientum_path(herramienta)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
+       <a  class="mostrar"  <%= link_to ({:action => :show, :id => herramienta.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>  
+      <a class="eliminar" <%= link_to ({ :action => :destroy, :id => herramienta.id })do%>
+      <i class="bi bi-trash"></i>
+      <% end %>
+      </a>
+</td>
+
+</tr>
+<% end %>
+<a href="herramienta/new" class="new"><i class="bi bi-plus-circle-fill"></i></a>
+  
+  
 </div>
 
-<%= link_to "New herramientum", new_herramientum_path %>
+<script>
+            $(document).ready(function() {
+              var oTable = $("#tablaherramientas").DataTable({
+                language: {
+                  url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/es-MX.json'
+              },
+
+          responsive: "true",
+          dom: 'Bfrtilp',    
+                buttons:[ 
+        {
+          extend:    'excelHtml5',
+          text:      '<i class="bi bi-file-earmark-excel"></i> ',
+          titleAttr: 'Exportar a Excel',
+          className: 'btn btn-success'
+        },
+        {
+          extend:    'pdfHtml5',
+          text:      '<i class="bi bi-file-earmark-pdf"></i> ',
+          titleAttr: 'Exportar a PDF',
+          className: 'btn btn-danger'
+        },
+        {
+          extend:    'print',
+          text:      '<i class="bi bi-printer"></i> ',
+          titleAttr: 'Imprimir',
+          className: 'btn btn-info'
+        },
+      ],
+                columnDefs: [ {
+            sortable: false,
+            "class": "index",
+            targets: 0
+        } ],
+        order: [[ 1, 'asc' ]],
+        fixedColumns: true
+        } );
+ 
+    oTable.on( 'order.dt search.dt', function () {
+        oTable.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+            }); 
+
+                
+            </script>

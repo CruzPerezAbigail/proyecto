@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://assets.mindbox.app/css/legacy-app.css?id=2ecdd2ab0a71021f849b">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-150206594-2"></script>
     
 </head>
@@ -35,45 +36,41 @@
                     </div>
                   
                     <h3>Inicio de Sesión</h3>
-                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html_options: {class: "usuario"}) do |f| %>
                       <%= render "devise/shared/error_messages", resource: resource %>
-                      <div class="field">
+                      <div class="form-group ">
 
 
                         <%= f.label :Correo %><br />
-                        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control form-control-usuario"%>
                       </div>
                     
-                      <div class="field">
+                      <div class="form-group ">
                         <%= f.label :password %><br />
-                        <%= f.password_field :password, autocomplete: "current-password" %>
+                        <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-usuario" %>
                       </div>
                     
                       <% if devise_mapping.rememberable? %>
-                        <div class="field">
+                        <div class="form-group ">
+                        <div class="custum-control custom-checkbox small">
                           <%= f.check_box :remember_me %>
                           <%= f.label :remember_me %>
+                        </div>
                         </div>
                       <% end %>
                     
                       
-                      <div class="actions">
-                        <%= f.submit "Ingresar" %>
+                      <div class="form-group ">
+                        <%= f.submit "Ingresar", class: "btn btn-primary btn-usuario btn-block" %>
                       </div>
                     <% end %>
                     <%= link_to 'Registrar', new_usuario_registration_path%>
 
-                    <div class="inline-block">
-                        <p class="flex flex-col text-center text-xs flex md:hidden"><a href="https://mindbox.app"
-                                target="_blank"><img src="https://assets.mindbox.app/img/assets/mindbox.svg"
-                                    alt="MindBox" class="w-32 mx-auto"></a>
-                            Todos los derechos reservados © 2022.
-                        </p>
-                    </div>
+                    
                 </div>
             </div>
             </div>
-            <%= link_to "Cerrar presentación", destroy_usuario_session_path, :method => :delete %>
+            
         </div>
     </div>
     

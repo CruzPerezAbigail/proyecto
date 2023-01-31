@@ -1,4 +1,5 @@
 class MaterialesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_materiale, only: %i[ show edit update destroy ]
 
   # GET /materiales or /materiales.json
@@ -25,7 +26,7 @@ class MaterialesController < ApplicationController
 
     respond_to do |format|
       if @materiale.save
-        format.html { redirect_to materiale_url(@materiale), notice: "Materiale was successfully created." }
+        format.html { redirect_to materiale_url(@materiale), notice: "El material fue creado con éxito." }
         format.json { render :show, status: :created, location: @materiale }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class MaterialesController < ApplicationController
   def update
     respond_to do |format|
       if @materiale.update(materiale_params)
-        format.html { redirect_to materiale_url(@materiale), notice: "Materiale was successfully updated." }
+        format.html { redirect_to materiale_url(@materiale), notice: "El material se actualizó con éxito." }
         format.json { render :show, status: :ok, location: @materiale }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class MaterialesController < ApplicationController
     @materiale.destroy
 
     respond_to do |format|
-      format.html { redirect_to materiales_url, notice: "Materiale was successfully destroyed." }
+      format.html { redirect_to materiales_url, notice: "El material fue elimino con éxito." }
       format.json { head :no_content }
     end
   end

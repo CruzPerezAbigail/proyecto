@@ -14,7 +14,7 @@ class DepartamentosTest < ApplicationSystemTestCase
     visit departamentos_url
     click_on "New departamento"
 
-    fill_in "Area", with: @departamento.area
+    fill_in "Areas", with: @departamento.areas_id
     fill_in "Nombre", with: @departamento.nombre
     fill_in "Num equipo", with: @departamento.num_equipo
     click_on "Create Departamento"
@@ -27,7 +27,7 @@ class DepartamentosTest < ApplicationSystemTestCase
     visit departamento_url(@departamento)
     click_on "Edit this departamento", match: :first
 
-    fill_in "Area", with: @departamento.area
+    fill_in "Areas", with: @departamento.areas_id
     fill_in "Nombre", with: @departamento.nombre
     fill_in "Num equipo", with: @departamento.num_equipo
     click_on "Update Departamento"

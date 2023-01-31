@@ -3,6 +3,9 @@
 *=require_tree
 *=require_self
 
+*= require daterangepicker
+*=require dataTables/jquery.dataTables
+
 */
 @import "bootstrap";
 @import 'font_awesome5_webfont';
@@ -22,3 +25,5 @@
   }
 }
 
+
+@import "datatables";

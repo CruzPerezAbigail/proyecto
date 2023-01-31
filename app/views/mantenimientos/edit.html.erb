@@ -1,0 +1,92 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+<h4 class="text">Editar registro <%= @mantenimientos.id_mantenimiento %> </h4>
+</div>
+ <div class="probar">
+
+           <%= form_for @mantenimientos, url: mantenimientos_path(@mantenimientos) do |f| %>
+           <%= token_tag nil%>
+           <%= "<div>#{@mantenimientos.errors.full_messages.first}</div>".html_safe if @mantenimientos.errors.any?%>
+
+                  <div class="form-group row">
+                    <%= f.label :fecha_fin, 'Fecha inicio' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                    <%= f.text_field :fecha_inicio %>
+                    </div>  
+                  </div>
+
+                   <div class="form-group row">
+                    <%= f.label :fecha_fin, 'Fecha fin' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                    <%= f.text_field :fecha_fin %>
+                    </div>  
+                  </div>
+
+                   <div class="form-group row">
+                    <%= f.label :observaciones, 'Observaciones' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                    <%= f.text_field :observaciones %>
+                    </div>  
+                  </div>
+
+                   <div class="form-group row">
+                    <%= f.label :tipo_mantenimiento, 'Tipo mantenimiento' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                  <%= f.select :tipo_mantenimiento , ["Preventivo",  "Correctivo"] %>
+                    </div>  
+                  </div>
+
+                   <div class="form-group row">
+                    <%= f.label :serie, 'Serie del equipo' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                    <%= f.text_field :serie %>
+                    </div>  
+                  </div>
+
+                   <div class="form-group row">
+                    <%= f.label :id_departamento, 'Departamento' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                   <%= f.collection_select( :id_departamento, Departamento.all{|d| [d.nombre, d.id]}, :id, :nombre)%>
+                    </div>  
+                  </div>
+
+                   <div class="form-group row">
+                    <%= f.label :rfc, 'Usuario' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                    <%= f.text_field :rfc %>
+                    </div>  
+                  </div>
+
+                   <div class="form-group row">
+                    <%= f.label :id_materiales, 'Materiales' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                    <%= f.collection_select( :id_materiales, Materiale.all{|m| [m.nombre, m.id]}, :id_material, :nombre, class:'form-control')%>
+                    </div>  
+                  </div>
+
+                   <div class="form-group row">
+                    <%= f.label :id_herramienta, 'Herramienta' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                    <%= f.collection_select( :id_herramienta, Herramientum.all{|h| [h.nombre, h.id]}, :id_herramienta, :nombre, class:'form-control')%>
+                    </div>  
+                  </div>
+
+                   <div class="form-group row">
+                    <%= f.label :id_insumo, 'Insumo' , class:'col-sm-2'%>
+                    <div class="col-sm-4">
+                    <%= f.collection_select( :id_insumo, Insumo.all{|i| [i.nombre, i.id]}, :id_insumo, :nombre, class:'form-control')%>
+                    </div>  
+                  </div>
+
+                  <div class="col-sm-4">
+                  <button class="btn btn-info" type="submit">Guardar</button>
+                  <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+                  </div>
+                  <%end%>
+                  </form>

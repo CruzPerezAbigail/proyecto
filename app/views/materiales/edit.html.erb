@@ -1,10 +1,14 @@
-<h1>Editing materiale</h1>
+
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Material</a></li>
+          <li class="breadcrumb-item active">Caracteristicas material</li>
+        </ol>
+                  <h4 class="text">Material  <%= @materiale.id_material%> </h4>
+</div>
+
 
 <%= render "form", materiale: @materiale %>
-
+</div>
 <br>
 
-<div>
-  <%= link_to "Show this materiale", @materiale %> |
-  <%= link_to "Back to materiales", materiales_path %>
-</div>
+

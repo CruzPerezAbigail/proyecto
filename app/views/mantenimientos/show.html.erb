@@ -1,0 +1,88 @@
+<div class="container">
+      <h4 class="text text-secondary">Mantenimiento </h4>
+
+
+      <div class="form-group row">
+      <%= label :Id, 'Identificador', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.id_mantenimiento%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :fecha_inicio, 'Fecha de inicio', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.fecha_inicio%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :fecha_fin, 'Fecha final', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.fecha_fin%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :observaciones, 'Observaciones', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.observaciones%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :tipo_mantenimiento, 'IDENTIFICADOR', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.tipo_mantenimiento%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :serie, 'Serie del equipo', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.serie%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :id_departamento, 'Departamento', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.id_departamento%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :rfc, 'Usuario', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.rfc%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :id_materiales, 'Materiales', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.id_materiales%>
+      </div>
+      </div>
+
+
+      <div class="form-group row">
+      <%= label :id_herramienta, 'Herramienta', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.id_mantenimiento%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :id_insumo, 'Insumo', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @mantenimientos.id_insumo%>
+      </div>
+      </div>
+
+      <br>
+      <div >
+      <%= link_to "Regresar ", mantenimientos_path, class: "btn btn-success btn-xs round" %>
+      <%= link_to "Editar mantenimiento", edit_mantenimiento_path(@mantenimientos), class: "btn btn-success btn-xs round" %>
+      
+      </div>

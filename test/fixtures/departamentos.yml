@@ -3,9 +3,9 @@
 one:
   nombre: MyString
   num_equipo: 1
-  area: MyString
+  #areas: one
 
 two:
   nombre: MyString
   num_equipo: 1
-  area: MyString
+  #areas: two

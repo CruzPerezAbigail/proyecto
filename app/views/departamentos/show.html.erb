@@ -1,4 +1,18 @@
-<div align="center">
+
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Departamentos</a></li>
+          <li class="breadcrumb-item active">Caracteristicas del departamento</li>
+        </ol>
+                  <h4 class="text">Departamento <%= @departamento.id_departamento%> </h4>
+</div>
+ <div class="probar">
 
 <p style="color: green font-size: 20px"><%= notice %></p>
 
@@ -11,6 +25,7 @@
 <%= link_to "Editar  departamento", edit_departamento_path(@departamento), class: "btn btn-success btn-xs round" %> 
  
 
-  <%= link_to "Eliminar departamento", @departamento, method: :delete, data: { confirm: "Esta seguro de eliminar"}, class: "btn btn-success btn-xs round" %>
+  <%= button_to "Eliminar departamento", @departamento, method: :delete, data: { confirm: "Esta seguro de eliminar"}, class: "btn btn-success btn-xs round" %>
  
+  
 </div>

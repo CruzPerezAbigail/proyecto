@@ -1,4 +1,5 @@
 class HerramientaController < ApplicationController
+  load_and_authorize_resource
   before_action :set_herramientum, only: %i[ show edit update destroy ]
 
   # GET /herramienta or /herramienta.json
@@ -23,22 +24,22 @@ class HerramientaController < ApplicationController
   def create
     @herramientum = Herramientum.new(herramientum_params)
 
-    respond_to do |format|
+    
       if @herramientum.save
-        format.html { redirect_to herramientum_url(@herramientum), notice: "Herramientum was successfully created." }
-        format.json { render :show, status: :created, location: @herramientum }
+        flash[:notice]= "La herramienta fue creada con exito";
+        redirect_to herramienta_path
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @herramientum.errors, status: :unprocessable_entity }
+        flash[:notice]= "La herramienta no pudo ser guardada falta algun campo"
+        render :new 
       end
     end
-  end
+  
 
   # PATCH/PUT /herramienta/1 or /herramienta/1.json
   def update
     respond_to do |format|
       if @herramientum.update(herramientum_params)
-        format.html { redirect_to herramientum_url(@herramientum), notice: "Herramientum was successfully updated." }
+        format.html { redirect_to herramientum_url(@herramientum), notice: "Herramienta se actualizó con éxito." }
         format.json { render :show, status: :ok, location: @herramientum }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class HerramientaController < ApplicationController
     @herramientum.destroy
 
     respond_to do |format|
-      format.html { redirect_to herramienta_url, notice: "Herramientum was successfully destroyed." }
+      format.html { redirect_to herramienta_url, notice: "Herramienta se ha eliminado correctamente" }
       format.json { head :no_content }
     end
   end

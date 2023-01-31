@@ -1,10 +1,24 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Marca</a></li>
+          <li class="breadcrumb-item active">Caracteristicas de la marca</li>
+        </ol>
+                  <h4 class="text">Marca <%= @marca.id_marca%> </h4>
+</div>
+ <div class="probar">
 <p style="color: green"><%= notice %></p>
 
 <%= render @marca %>
 
 <div>
-  <%= link_to "Editar  marca", edit_marca_path(@marca) %> |
-  <%= link_to "Lista marcas", marcas_path %>
+  
+  <%= link_to "Lista marcas", marcas_path %> |
 
   <%= button_to "Eliminar marca", @marca, method: :delete %>
 </div>

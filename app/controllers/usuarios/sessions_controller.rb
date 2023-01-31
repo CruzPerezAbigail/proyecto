@@ -4,18 +4,27 @@ class Usuarios::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  def new
-  if  super
-  else
-    flash[:danger] = 'Correo electrónico/contraseña no válida' # Not quite right!
-    render 'new'
-  end
-  end 
-
-  # POST /resource/sign_in
-  # def create
-  #   super
+  # def new
+  # if  super
+  # else
+  #   flash[:danger] = 'Correo electrónico/contraseña no válida' # Not quite right!
+  #   render 'new'
   # end
+  # end 
+
+  # # POST /resource/sign_in
+    def create
+    
+       usuario = Usuario.find_by_email(email: params[:session][:email].downcase)
+  
+       if usuario && usuario.authenticate(params[:session][:password]) 
+         @current_usuario = usuario
+       else
+        flash[:danger]=  'correo electrónico o contraseña es invalida'
+        render :new 
+       end
+     end
+    end
 
   # DELETE /resource/sign_out
  # def destroy

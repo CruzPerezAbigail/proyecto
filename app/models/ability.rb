@@ -3,33 +3,43 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(usuarios)
+  def initialize(usuario)
    
   
-     usuarios ||= Usuarios.new
-      if usuarios.admin?
+    usuario ||= Usuario.new
+       if usuario.role= 1
+
         can :manage, :all
-      else 
-        can :update, Departamento do |departamentos|
-        departamentos.usuarios == usuario
-       end
-       can :destroy, Departamento do |departamentos|
-        departamentos.usuario == usuario
+       
+       elsif usuario.agente?
+        alias_action :create, :read, :update, :to => :cru
+        can :cru, Solicitud
+        can :cru, Equipo12 
+        can :cru, Mantenimiento
+        can :cru, Reporte 
+        can :cru, Licencium
+        can :cru, Tipo
+        can :cru, Marca
+        can :cru, Insumo
+        can :cru, Materiale
+        can :cru, Departamento
+        can :manage, Usuario
+
+        #cannot :destroy, Equipo12
+
+       elsif usuario.personal?
+        
+       alias_action :create, :read, :update, to => :cru
+        can :cru, Solicitud
+        
        end 
-       can :update, Equipos do |equipos|
-        departamentos.usuario == usuario
-       end
-       can :destroy, Equipos do |equipos|
-        departamentos.usuario == usuario
-       end 
-       can :create, Departamento
-       can :create, Equipo
-       can :read, :all
-      
-     end
-    end 
+
+    
+    end
+   
+  end 
   
-end 
+
       
   
 

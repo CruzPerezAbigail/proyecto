@@ -1,7 +1,19 @@
-<%= form_with(model: tipo) do |form| %>
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+<h4 class="text">Nuevo Tipo </h4>
+</div>
+ <div class="probar">
+
+ <%= form_with(model: tipo) do |form| %>
   <% if tipo.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(tipo.errors.count, "error") %>  prohibió guardar este tipo::</h2>
+     
 
       <ul>
         <% tipo.errors.each do |error| %>
@@ -10,13 +22,28 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :nombre, style: "display: block" %>
-    <%= form.text_field :nombre %>
+<br>
+  <div class="form-group row">
+    <%= form.label :nombre, "Nombre:", class:'col-sm-2'  %>
+    <div class="col-sm-4">
+    <%= form.text_field :nombre, class:'form-control' %>
   </div>
-
   <div>
-  <button class="btn btn-info"  <%= form.submit %>Guardar </button>
+  <br>
+  <br>
+  <button class="btn btn-info" <%= form.submit %> Guardar </button>
+  <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+

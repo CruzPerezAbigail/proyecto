@@ -1,9 +1,19 @@
-<h1>Edit usuarios</h1>
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@usuario) do |f| %>
-      <%= render 'shared/error_messages' %>
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+<h4 class="text">Editar usuario </h4>
+</div>
+ <div class="probar">
+
+   <%= form_for @usuario do |f| %>
+      <%= token_tag nil %>
+   
+      
 
       <div class="form-group row" >
       <%= f.label :nombre,'Nombre ',  class:'col-sm-2' %>
@@ -59,6 +69,9 @@
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
     </div>
-
-      <%= f.submit "Guardar cambios", class: "btn btn-primary" %>
+<div class="col-sm-4">
+      <button class="btn btn-info" type="submit">Guardar</button>
+               <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+</div>
     <% end %>
+    </form>

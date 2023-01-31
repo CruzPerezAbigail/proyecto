@@ -1,4 +1,5 @@
 class InsumosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_insumo, only: %i[ show edit update destroy ]
 
   # GET /insumos or /insumos.json
@@ -24,8 +25,9 @@ class InsumosController < ApplicationController
     @insumo = Insumo.new(insumo_params)
 
     respond_to do |format|
-      if @insumo.save
-        format.html { redirect_to insumo_url(@insumo), notice: "Insumo was successfully created." }
+     if @insumo.save
+    
+        format.html { redirect_to insumo_url(@insumo), notice: "El Insumo fue creado exitosamente " }
         format.json { render :show, status: :created, location: @insumo }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class InsumosController < ApplicationController
   def update
     respond_to do |format|
       if @insumo.update(insumo_params)
-        format.html { redirect_to insumo_url(@insumo), notice: "Insumo was successfully updated." }
+        format.html { redirect_to insumo_url(@insumo), notice: "Insumo se actualizo correctamente" }
         format.json { render :show, status: :ok, location: @insumo }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +54,7 @@ class InsumosController < ApplicationController
     @insumo.destroy
 
     respond_to do |format|
-      format.html { redirect_to insumos_url, notice: "Insumo was successfully destroyed." }
+      format.html { redirect_to insumos_url, notice: "Insumo eliminado." }
       format.json { head :no_content }
     end
   end

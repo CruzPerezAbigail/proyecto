@@ -7,12 +7,12 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+//= require rails-ujs
+//=require activestorage
 //=require bootstrap
 //=require jquery 
 //=require popper 
-//=require rails-ujs
-
-//=require activestorage
+//=require datatables
 //=require_tree
 
 

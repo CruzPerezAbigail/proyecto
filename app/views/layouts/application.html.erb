@@ -1,297 +1,362 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <title>Sistema</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <%= stylesheet_link_tag "style" %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <%= javascript_include_tag 'application.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'datatables.js', 'data-turbolinks-track': 'reload' %>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.3/css/buttons.bootstrap5.min.css"/>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.bootstrap5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.print.min.js"></script>
+    
+  </head>
 
-<head>
+  <body>
+  
+  <div class="d-flex" id="wrapper">
+  <!-- Sidebar-->
+  <div class="border-end " id="sidebar-wrapper">
+      <div class="sidebar-heading border-bottom" >Sistema de Inventario </div>
+      <div class="list-group list-group-flush">
+         
+      <aside id="sidebar" class="sidebar">
 
-<meta charset="utf-8">
-    <title>Sistema de Inventario CDC </title>
-<link rel="icon" type="images/logo.png"
-        href="http://www.itoaxaca.edu.mx/themes/tecoaxaca/assets/images/main/tecnmicono.ico"
-        nonce="VOPVPfCnyGN7WVqCft5YIbPf1vvU31E2">
-    <link href="http://www.itoaxaca.edu.mx/combine/db925c58ba962b43e74af9b3d5cebb5a-1662670895" rel="stylesheet"
-        nonce="VOPVPfCnyGN7WVqCft5YIbPf1vvU31E2">
-
-    <script type="text/javascript" async=""
-        src="http://stats.elevenware.mx/modules/base/js/owa.tracker-combined-min.js"></script>
-    <script src="https://connect.facebook.net/es_ES/sdk.js?hash=799c07a533bc50a3eb7e8c30b5703aba" async=""
-        crossorigin="anonymous"></script>
-    <script src="http://www.itoaxaca.edu.mx/themes/tecoaxaca/assets/vendor/jquery-3.3.1.min.js"
-        nonce="VOPVPfCnyGN7WVqCft5YIbPf1vvU31E2"></script>
-
-    <link href="http://www.itoaxaca.edu.mx/combine/1f8602ae2f8bab8da4bea78eac698888-1662741360" rel="stylesheet"
-        nonce="VOPVPfCnyGN7WVqCft5YIbPf1vvU31E2">
-    <link rel="preconnect" href="//cdn-h4.occ.com.mx">
-    <link rel="dns-prefetch" href="//cdn-h4.occ.com.mx">
-    <link rel="preload" href="//cdn-h4.occ.com.mx/fonts/hkgrotesk-semibold.woff2" as="font" type="font/woff2">
-    <link rel="preload" href="//cdn-h4.occ.com.mx/fonts/hkgrotesk-regular.woff" as="font" type="font/woff">
-    <link rel="preload stylesheet" href="//cdn-h4.occ.com.mx/fonts/stylesheet.css" as="style" type="text/css">
-    <script charset="utf-8"
-        src="https://platform.twitter.com/js/horizon_timeline.4836f7a62ef55f5880337b3b6602854f.js"></script>
-    <style type="text/css"
-        data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
+      <ul class="sidebar-nav" id="sidebar-nav">
+  
         
-    </style>
-
-    <script type='text/javascript' src=''></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
-    <script type='text/javascript'
-        src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
-        
-        
-</head>
-
-<body>
-
-
-<div class="u-noPaddingContainer contenedorGobierno " style="z-index:1000;">
-        <div class="row container-cabecera">
-            <div class="no-gutters" style="margin-left: 0px; margin-right: 0px;">
-                <div style="max-width:60%" align="center">
-                    <div class="align-items-start d-inline-block ipnLogo-enlace">
-                        
-                        
-                        <a href="/" style="z-index:0">
-                            <embed style="width:17%;height:auto; min-width:50px"
-                                src="http://www.itoaxaca.edu.mx/themes/tecoaxaca/assets/images/main/pleca_tecnm.jpg"
-                                alt="" class="plecaTECNM">
-                        </a>
-                        <a style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">SISTEMA DE INVENTARIOS CENTRO DE COMPUTO
-                        
-                        </a>
-                        <a href="/" style="z-index:0">
-                            <embed style="width:8%;height:auto; min-width:50px"
-                                src="http://www.oaxaca.tecnm.mx/themes/tecoaxaca/assets/images/main/ito.png">
-                        </a>
-                        
-                        <a href="https://it.sgwebcualli.com/Oaxaca/Inicio/tablero/informacion_importante/"
-                            style="z-index:0">
-                            <embed style="width:9%;height:auto; min-width:50px"
-                                src="http://www.oaxaca.tecnm.mx/themes/tecoaxaca/assets/images/main/gestion_c.png">
-                        </a>
-                      
-
-                    </div>
-                </div>
-            </div>
-       </div>
-    </div>
-</div>
-    <section class="menu cid-rD7NmT2EL6" id="menu2-0">
-        <nav id="menu-principal"
-            class="navbar beta-menu navbar-inverse sub-navbar navbar-dropdown align-items-center navbar-toggleable-sm"
-            style="background: rgba(27, 57, 106, 0.98); margin-bottom: 0px; font-size: smaller;">
-            <div class="navbar-header">
-                <button style="z-index:4000" class="navbar-toggler navbar-toggler-right" type="button"
-                    data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="hamburger">
-                        <span style="border: 1px solid #fff; box-shadow: 0px 0px 2px 2px #000;"></span>&ZeroWidthSpace;
-                        <span style="border: 1px solid #fff; box-shadow: 0px 0px 2px 2px #000;"></span>&ZeroWidthSpace;
-                        <span style="border: 1px solid #fff; box-shadow: 0px 0px 2px 2px #000;"></span>&ZeroWidthSpace;
-                        <span style="border: 1px solid #fff; box-shadow: 0px 0px 2px 2px #000;"></span>&ZeroWidthSpace;
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent"
-                    style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">
-                    <ul class="navbar-nav" data-app-modern-menu="true">
-                        <li class="nav-item" style="padding-top: 5px;">
-                            <a class=" link text-black" href="/">
-                                <span class="icon-home" title="Inicio" aria-hidden="true"></span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a href="" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                                data-toggle="dropdown-submenu" aria-haspopup="true" aria-expanded="false">
-                                Usuarios
-                            </a>
-                            <div class="dropdown-menu">
-                            <a class="text-black dropdown-item" href="usuarios/new">Registrar</a>
-                            <a class="text-black dropdown-item" href="usuario">Lista</a>
-                </div>                            
-
-                           
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a href="" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                                data-toggle="dropdown-submenu" aria-expanded="false">
-                                Equipos
-                            </a>
-
-                            <div class="dropdown-menu">
-                            <a class="text-black dropdown-item" href="equipos/new">Registrar</a>
-                            <a class="text-black dropdown-item" href="equipos">Lista</a>
-                </div>
-
-                        </li>
-                        <li class="nav-item dropdown">
-                        <a href="licencia" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                            data-toggle="dropdown-submenu" aria-expanded="false">
-                            Licencias
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="text-black dropdown-item" href="licencia/new">Registrar</a>
-                            <a class="text-black dropdown-item" href="">Lista</a>
-                </div>
-                
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="marcas" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                            data-toggle="dropdown-submenu" aria-expanded="false">
-                            Marca
-                        </a>
-                        <div class="dropdown-menu">
-                        <a class="text-black dropdown-item" href="marcas/new">Registrar</a>
-                        <a class="text-black dropdown-item" href="">Lista</a>
-            </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                    <a href="tipos" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                        data-toggle="dropdown-submenu" aria-expanded="false">
-                        Tipos
-                    </a>
-                    <div class="dropdown-menu">
-                    <a class="text-black dropdown-item" href="tipos/new">Registrar</a>
-                    <a class="text-black dropdown-item" href="">Lista</a>
-        </div>
-                </li>   
-
-                        <li class="nav-item dropdown">
-                            <a href="/departamentos/show" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                                data-toggle="dropdown-submenu" aria-expanded="false">
-                                Departamentos
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="text-black dropdown-item"
-                                    href="http://www.oaxaca.tecnm.mx/posgrado">Posgrado</a>
-                                <a class="text-black dropdown-item" href="/electronica">Ingeniería Electrónica</a>
-                                <a class="text-black dropdown-item" href="/civil">Ingeniería Civil</a>
-                                <a class="text-black dropdown-item" href="/mecanica">Ingeniería Mecánica</a>
-                                <a class="text-black dropdown-item" href="/industrial">Ingeniería Industrial</a>
-                                <a class="text-black dropdown-item" href="/quimica">Ingeniería Química</a>
-                                <a class="text-black dropdown-item" href="/electrica">Ingeniería Electrica</a>
-                                <a class="text-black dropdown-item" href="/gestion">Ingeniería en Gestión
-                                    Empresarial</a>
-                                <a class="text-black dropdown-item" href="/sistemas">Ingeniería en Sis.
-                                    Computacionales</a>
-                                <a class="text-black dropdown-item" href="/administracion">Licenciatura en
-                                    Administración</a>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a href="/materiales/index" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                                data-toggle="dropdown-submenu" aria-expanded="false">
-                                Materiales
-                            </a>
-                           
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a href="/inventario/index" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                                data-toggle="dropdown-submenu" aria-expanded="false">
-                                Inventario
-                            </a>
-                            
-
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="/areas/new" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                                data-toggle="dropdown-submenu" aria-expanded="false">
-                                Areas
-                            </a>
-                            
-
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                                data-toggle="dropdown-submenu" aria-expanded="false">
-                                Mantenimiento
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="text-black dropdown-item" target="_blank"
-                                    href="/mantenimiento/preventivo">Programar Mantenimiento preventivo</a>
-                                
-                        
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a href="/usuario/" class="nav_link link text-black dropdown-toggle" style="outline-style:none"
-                                data-toggle="dropdown-submenu" aria-expanded="false">
-                               Cuenta
-                            </a>
-                            <ul class="dropdown-menu">
-              
-              <li><%= link_to "Settings", '#' %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Cerrar sesion ", destroy_usuario_session_path, method: "delete" %>
-              </li>
-            </ul>
-                                </li>
-
-                        <form class="d-flex" role="search" >
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                      </form>
-                      
-
-                        
+  
+        <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#usuarios-nav" data-bs-toggle="collapse" >
+          <i class="bi bi-people"></i><span>Usuarios</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="usuarios-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
             
-                    </ul>
-
-                </div>
-
-
-            </div>
-
-        </nav>
-        
-    </section>
-
-    <div class="container-fluid">
+            <a href="<%= new_usuario_path %>" class="edit"> <i class="bi bi-circle"></i>Registrar Usuarios</a>
+            </li>
+            <li>
+            
+            <a href="<%= usuarios_path%>" class="edit"> <i class="bi bi-circle"></i>Listar usuarios</a>
+            </li>
+            <li>
               
-          <%= yield%>
-          </div>
+          </ul>
+        </li>
+       
 
+        <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#areas-nav" data-bs-toggle="collapse" href="">
+        <i class="bi bi-textarea"></i><span >Areas</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="areas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+          <a href="<%= new_area_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar áreas</a>
+          </li>
+          <li>
+          <a href="<%= areas_path%>" class="edit"> <i class="bi bi-circle"></i>Listar áreas</a>
+          </li>
+          <li>
+            
+        </ul>
+      </li>
+
+ <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#inventario-nav" data-bs-toggle="collapse" href="">
+      <i class="bi bi-list-check"></i><span>Inventario</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="inventario-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+        <a href="<%=  equipo12_index_url%>" class="edit"> <i class="bi bi-circle"></i>Equipos</a>
+        </li>
+         <li>
+          <a href="<%= herramienta_path%>" class="edit"> <i class="bi bi-circle"></i>Herramienta</a>
+          </li>
+          <li>
+          <a href="<%= materiales_path%>" class="edit"> <i class="bi bi-circle"></i> Materiales</a>
+          </li>
+        
+      </ul>
+    </li>
+
+        <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#equipo12-nav" data-bs-toggle="collapse" href="">
+        <i class="bi bi-pc-display"></i><span>Equipos</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="equipo12-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+         
+          <a href="<%= new_equipo12_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar equipo</a>
+            </a>
+          </li>
+          <li>
+          <a href="<%= equipo12_index_url%>" class="edit"> <i class="bi bi-circle"></i>Listar equipo</a>
+          </a>
+          </li>
+          <li>
+            
+        </ul>
+      </li>
+
+       <% if false %>
+       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#licencia-nav" data-bs-toggle="collapse" href="">
+        <i class="bi bi-card-list"></i><span>Licencias</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="licencia-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+          <a href="<%= new_licencium_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar licencia</a> 
+          </li>
+        
+          <li>
+          <a href="<%= licencium_path%>" class="edit"> <i class="bi bi-circle"></i>Listar licencia </a>
+          </li>
           
+            
+        </ul>
+      </li>
+<%end%>
+      <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#departamento-nav" data-bs-toggle="collapse" href="">
+      <i class="bi bi-building"></i><span>Departamentos</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="departamento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+        <a href="<%= new_departamento_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar departamento</a>
+        </li>
+        <li>
+        <a href="<%= departamentos_path%>" class="edit"> <i class="bi bi-circle"></i>Listar departamentos</a>
+        </li>
+        <li>
+          
+      </ul>
+    </li>
+        
+    <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tipos-nav" data-bs-toggle="collapse" href="">
+          <i class="bi bi-phone-vibrate"></i><span>Tipos</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tipos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+          <a href="<%= new_tipo_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar tipos</a> 
+          </li>
+          <li>
+          <a href="<%= tipos_path%>" class="edit"> <i class="bi bi-circle"></i>Listar tipos</a>
+          </li>
+          
+            
+        </ul>
+      </li>
+        
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#marcas-nav" data-bs-toggle="collapse" href="">
+        <i class="bi bi-list-columns"></i></i><span>Marcas</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="marcas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+          <a href="<%= new_marca_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar Marcas</a>
+          </li>
+          <li>
+          <a href="<%= marcas_path%>" class="edit"> <i class="bi bi-circle"></i>Listar Marcas</a>
+          </li>
+          <li>
+            
+        </ul>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#materiales-nav" data-bs-toggle="collapse" href="">
+        <i class="bi bi-battery"></i></i><span>Materiales</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="materiales-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+          <a href="<%= new_materiale_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar Material</a>
+          </li>
+          <li>
+          <a href="<%= materiales_path%>" class="edit"> <i class="bi bi-circle"></i>Listar Materiales</a>
+          </li>
+          <li>
+            
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#herramienta-nav" data-bs-toggle="collapse" href="">
+        <i class="bi bi-speedometer"></i></i><span>Herramientas</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="herramienta-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+          <a href="<%= new_herramientum_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar herramienta</a>
+          </li>
+          
+          <li>
+          <a href="<%= herramienta_path%>" class="edit"> <i class="bi bi-circle"></i>Listar herramienta</a>
+          </li>
+          <li>
+            
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#insumos-nav" data-bs-toggle="collapse" href="">
+        <i class="bi bi-memory"></i></i><span>Insumos</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="insumos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+          <a href="<%= new_insumo_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar Insumo</a>
+          </li>
+          <li>
+          <a href="<%= insumos_path%>" class="edit"> <i class="bi bi-circle"></i>Insumos</a>
+          </li>
+          <li>
+            
+        </ul>
+      </li>
+
+      
+      
+      <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#mantenimiento-nav" data-bs-toggle="collapse" href="">
+      <i class="bi bi-pc-display"></i><span>Mantenimiento</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="mantenimiento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+        <a href="<%=  new_mantenimiento_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar mantenimiento</a>
+        </li>
+        <li>
+        <a href="<%= mantenimientos_path%>" class="edit"> <i class="bi bi-circle"></i>Bitacora</a>
+        </li> 
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#solicitud-nav" data-bs-toggle="collapse" href="">
+      <i class="bi bi-file-minus-fill"></i><span>Solicitud</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="solicitud-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+        <a href="<%=  new_solicitud_path%>" class="edit"> <i class="bi bi-circle"></i>Realizar solicitud</a>
+        </li>
+        <li>
+        <a href="<%= solicituds_path%>" class="edit"> <i class="bi bi-circle"></i>Solicitudes</a>
+        </li> 
+      </ul>
+    </li>
+
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#reporte-nav" data-bs-toggle="collapse" href="">
+      <i class="bi bi-file-break-fill"></i><span>Reporte</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="reporte-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+        <a href="<%=  new_reporte_path%>" class="edit"> <i class="bi bi-circle"></i>Realizar reporte</a>
+        </li>
+        <li>
+        <a href="<%= reportes_path%>" class="edit"> <i class="bi bi-circle"></i>Reportes</a>
+        </li> 
+         
+      </ul>
+    </li>
+
+    
+
+  
+  
+      </ul>
+  
+    </aside><!-- End Sidebar-->
+
+      </div>
+  </div>
+  <!-- Page content wrapper-->
+  <div id="page-content-wrapper">
+      <!-- Top navigation-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <div class="container-fluid">
+          
+            <a class="bis bi-list" id="sidebarToggle" style="font-size:27px;"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                  <li class="nav-item active"> 
+                  
+                   </li>
+                      <li class="nav-item active"><a class="nav-link" href="/">Inicio</span></a></li>
+                     
+                      <li class="nav-item dropdown">
+                      <% if current_usuario%>
+                          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</a>
+                          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" <%= link_to "Cerrar sesion ", destroy_usuario_session_path  %></a>
+                              <a class="dropdown-item" <%=link_to "Mi cuenta", edit_usuario_registration_path %> </a>
+                              <a class="dropdown-item" href="#!">Another action</a>
+                             <%else%>
+                             <li class="nav-item active">
+                              <a class="dropdown-item" <%= link_to "Crear cuenta ",new_usuario_registration_path %></a>
+                              <a class="dropdown-item" <%= link_to "Iniciar sesion  ",new_usuario_session_path %></a>
+                              </li>
+                              <%end %>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <!-- Page content-->
+      <div class="container-fluid">
+
+      
+          <%= yield %>
+      </div>
+  </div>
+</div>
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.1/js/all.min.js"
-    nonce="TTuOFjRrHczQQwcuuiZFzqD1yLREHUvF"></script>
-<script src="http://www.itoaxaca.edu.mx/combine/8adb74e9026f889a8489cb0dc5848b16-1662671340"
-    nonce="TTuOFjRrHczQQwcuuiZFzqD1yLREHUvF">
-    </script>
-<!-- Start Open Web Analytics Tracker -->
-<script type="text/javascript" nonce="TTuOFjRrHczQQwcuuiZFzqD1yLREHUvF">
-    //<![CDATA[
-    var owa_baseUrl = 'http://stats.elevenware.mx/';
-    var owa_cmds = owa_cmds || [];
-    owa_cmds.push(['setSiteId', '09f71ea869cfb5abc4bfc027bf02cb4d']);
-    owa_cmds.push(['trackPageView']);
-    owa_cmds.push(['trackClicks']);
-    owa_cmds.push(['trackDomStream']);
 
-    (function () {
-        var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
-        owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl);
-        _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
-        var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
-    }());
-//]]>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script >
+
+window.addEventListener('DOMContentLoaded', event => {
+
+  // Toggle the side navigation
+  const sidebarToggle = document.body.querySelector('#sidebarToggle');
+  if (sidebarToggle) {
+      // Uncomment Below to persist sidebar toggle between refreshes
+      // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+      //     document.body.classList.toggle('sb-sidenav-toggled');
+      // }
+      sidebarToggle.addEventListener('click', event => {
+          event.preventDefault();
+          document.body.classList.toggle('sb-sidenav-toggled');
+          localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+      });
+  }
+
+});
+
 </script>
-<!-- End Open Web Analytics Code -->
-
-<iframe scrolling="no" frameborder="0" allowtransparency="true"
-    src="https://platform.twitter.com/widgets/widget_iframe.c4bdc17e77719578b594d5555bee90db.html?origin=http%3A%2F%2Fwww.itoaxaca.edu.mx"
-    title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no"
-    frameborder="0" allowtransparency="true" allowfullscreen="true"
-    style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;"
-    title="Twitter analytics iframe"></iframe>
-     </body>
+</body>
 </html>

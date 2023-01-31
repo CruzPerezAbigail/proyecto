@@ -2,8 +2,8 @@
 
 one:
   nombre: MyString
-  departamentos: one
+  
 
 two:
   nombre: MyString
-  departamentos: two
+  

@@ -1,11 +1,14 @@
-<div align="center">
-<h1>Editar departamento</h1>
 
-<%= render "form", departamento: @departamento %>
 
-<br>
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Departamentos</a></li>
+          <li class="breadcrumb-item active">Editar el  departamento</li>
+        </ol>
+                  <h4 class="text">Departamento <%= @departamento.id_departamento%> </h4>
 
 <div>
-  <%= link_to "Lista de  departamento", @departamento %> |
-  <%= link_to "Regresar a departamentos", departamentos_path %>
+<%= render "form", departamento: @departamento %>
 </div>
+<br>
+
+

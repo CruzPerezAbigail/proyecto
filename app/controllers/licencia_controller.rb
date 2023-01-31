@@ -1,5 +1,5 @@
 class LicenciaController < ApplicationController
-  
+  load_and_authorize_resource
   before_action :set_licencium, only: %i[ show edit update destroy ]
 
   # GET /licencia or /licencia.json
@@ -23,15 +23,13 @@ class LicenciaController < ApplicationController
   # POST /licencia or /licencia.json
   def create
     @licencium = Licencium.new(licencium_params)
-
-    respond_to do |format|
       if @licencium.save
-        format.html { redirect_to licencium_url(@licencium), notice: "La licencia fue creada con exito." }
-        format.json { render :show, status: :created, location: @licencium }
+       flash[:notice] = "La licencia fue creada con exito." 
+       redirect_to licencia_index
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @licencium.errors, status: :unprocessable_entity }
-      end
+      
     end
   end
 
@@ -66,6 +64,6 @@ class LicenciaController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def licencium_params
-      params.require(:licencium).permit(:id_licencia, :nombre, :anio, :num_licencia)
+      params.require(:licencium).permit( :nombre, :anio, :num_licencia)
     end
 end

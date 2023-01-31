@@ -1,5 +1,11 @@
-<div align="center">
-<h1>Nuevo departamento</h1>
+
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Departamentos</a></li>
+          <li class="breadcrumb-item active">Registrar nuevo departamento</li>
+        </ol>
 
 <%= render "form", departamento: @departamento %>
 
@@ -8,3 +14,10 @@
 <div>
   <%= link_to "Regresar a  departamentos", departamentos_path %>
 </div>
+
+
+
+
+
+
+

@@ -1,35 +1,70 @@
-<div align="center">
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
 
-<%= form_with(model: departamento) do |form| %>
-  <% if departamento.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(departamento.errors.count, "error") %> prohibited this departamento from being saved:</h2>
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
 
-      <ul>
-        <% departamento.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<h4 class="text">Departamento </h4>
+</div>
+ <div class="probar">
 
-  <div>
-    <%= form.label :nombre, style: "display: block" %>
-    <%= form.text_field :nombre  %>
-  </div>
+ <%= form_with(model: departamento) do |form| %>
+  <%= token_tag nil %>
+   <% if departamento.errors.any? %>
+     <div style="color: red">
+       
+ 
+       <ul>
+         <% departamento.errors.each do |error| %>
+           <li><%= error.full_message %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+   <br>
 
-  <div>
-    <%= form.label :num_equipo, style: "display: block" %>
-    <%= form.number_field :num_equipo %>
-  </div>
+   <div class="form-group row">
+   <%= form.label :nombre ,'Nombre:', class:'col-sm-2' %>
+   
+   <div class="col-sm-4">
+   <%= form.text_field :nombre , class:'form-control' %>
+   </div>
+</div>
 
-  <div>
-    <%= form.label :area, style: "display: block" %>
-    <%= collection_select(:areas, :id_area, Area.all.order(:nombre), :id_area, :nombre, class:'form-control')%>
-                           
-  </div>
 
-  <div>
-  <button class="btn btn-info" <%= form.submit %> Guardar </button>
-  </div>
-<% end %>
+
+ 
+   <div class="form-group row ">
+     <%= form.label :num_equipo, class:'col-sm-2'%>
+     <div class="col-sm-4">
+     <%= form.number_field :num_equipo, class:'form-control'  %>
+     </div>
+   </div>
+ 
+   <div class="form-group row ">
+     <%= form.label :area, class:'col-sm-2' %>
+     <div class="col-sm-4">
+    <div class="placeholder">
+     <%= form.collection_select( :id_area, Area.all.order(:nombre), :id, :nombre, class:'form-control')%>                      
+   </div>
+</div>
+</div>
+
+
+   
+
+ <br>
+   <div>
+   <button class="btn btn-info" <%= form.submit %> Guardar </button>
+   <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+   </div>
+   </div>
+ <% end %>
+              
+
+
+
+
+

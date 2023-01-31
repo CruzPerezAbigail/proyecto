@@ -1,0 +1,61 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+<h4 class="text">Nueva Solicitud</h4>
+</div>
+ <div class="probar">
+<%= form_with(model: solicitud) do |form| %>
+  <% if solicitud.errors.any? %>
+    <div style="color: red">
+      
+
+      <ul>
+        <% solicitud.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+                          <div class="form-group row">
+                           <%= form.label :area_solicitante, "Area solicitante :" , class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <div class="placeholder">
+                           <%= form.collection_select(:area_solicitante, Area.all{|a| [a.nombre]}, :id, :nombre, class:'form-control', prompt: "Seleccione el área")%>
+                           </div>
+                           </div>
+                           </div>
+
+  <div class="form-group row">
+    <%= form.label :fecha, class:'col-sm-2'%>
+     <div class="col-sm-4">
+    <%= form.date_field :fecha %>
+  </div>
+  </div>
+<br>
+  <div class="form-group row">
+    <%= form.label :descripcion, class:'col-sm-2' %>
+    <div class="col-sm-6">
+    <%= form.text_area :descripcion %>
+  </div>
+  </div>
+<br>
+   <div class="form-group row">
+                       <%= form.label :rfc, "Usuario" , class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <div class="placeholder">
+                       <%= form.collection_select( :rfc, Usuario.all{|u| [u.nombre, u.rfc]}, :rfc, :nombre, class:'form-control', prompt:"Seleccione su usuario")%>
+                        </div>
+                       </div>
+                            </div>
+
+  <div>
+   <button class="btn btn-info" <%= form.submit %> Guardar </button>
+  <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+  </div>
+<% end %>

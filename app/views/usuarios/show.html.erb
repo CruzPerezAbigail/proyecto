@@ -1,0 +1,73 @@
+
+
+<div class="container">     
+                  <h4 class="text text-secondary">Equipo </h4>
+
+       
+
+                      <div class="form-group row">
+                          <%= label :rfc ,'RFC:', class:'col-sm-2' %>
+                          
+                          <div class="col-sm-4">
+                          <%= @usuarios.rfc %>
+                          </div>
+                      </div>
+
+                      
+
+                           <div class="form-group row ">
+                           <%= label :nombre ,'Nombre:', class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%= @usuarios.nombre%>
+                           </div>
+                  </div>
+
+                           <div class="form-group row">
+                           <%= label :primerapellido ,'Primer apellido', class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%= @usuarios.apellidouno%>
+                           </div>
+                           </div>
+
+                           <div class="form-group row">
+                           <%= label :segundoapellido ,'Segundo apellido', class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%= @usuarios.apellidodos%>
+                           </div>
+                       </div>
+
+                       <div class="form-group row">
+                           <%= label :Role ,'Role', class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%= @usuarios.role%>
+                           </div>
+                       </div>
+
+
+                       <div class="form-group row">
+                       <%= label :Email ,'Correo', class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <%= @usuarios.email %>
+                           
+                       
+                       </div>
+                            </div>
+                          
+
+                          
+                             <br>
+                             <br>
+           
+                             
+                              <%= link_to 'Regresar', url_for(:back), class: "btn btn-warning" %>
+                             <%= button_to 'Eliminar', { :action => :destroy, :id => @usuarios.rfc}, :method => :delete, :data => { :confirm => 'Esta seguro?' } %>
+    
+                                  <br>
+                                  <br>
+                             
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+

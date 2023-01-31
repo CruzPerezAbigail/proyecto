@@ -1,4 +1,5 @@
 class TiposController < ApplicationController
+  load_and_authorize_resource
   before_action :set_tipo, only: %i[ show edit update destroy ]
 
   # GET /tipos or /tipos.json
@@ -25,7 +26,7 @@ class TiposController < ApplicationController
 
     respond_to do |format|
       if @tipo.save
-        format.html { redirect_to tipo_url(@tipo), notice: "Tipo was successfully created." }
+        format.html { redirect_to tipo_url(@tipo), notice: "Tipo fue creado con éxito." }
         format.json { render :show, status: :created, location: @tipo }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class TiposController < ApplicationController
   def update
     respond_to do |format|
       if @tipo.update(tipo_params)
-        format.html { redirect_to tipo_url(@tipo), notice: "Tipo was successfully updated." }
+        format.html { redirect_to tipo_url(@tipo), notice: "El tipo se actualizó con éxito." }
         format.json { render :show, status: :ok, location: @tipo }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class TiposController < ApplicationController
     @tipo.destroy
 
     respond_to do |format|
-      format.html { redirect_to tipos_url, notice: "Tipo was successfully destroyed." }
+      format.html { redirect_to tipos_url, notice: "Tipo se elimino exitosamente." }
       format.json { head :no_content }
     end
   end

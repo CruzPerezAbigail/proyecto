@@ -1,0 +1,19 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<p style="color: green"><%= notice %></p>
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+<h4 class="text">Reporte</h4>
+</div>
+ <div class="probar">
+<%= render @reporte %>
+
+<div>
+  <%= link_to "Editar reporte", edit_reporte_path(@reporte) %> |
+  <%= link_to "Regresar reportes", reportes_path %>
+
+  <%= button_to "Eliminar reporte", @reporte, method: :delete %>
+</div>

@@ -1,0 +1,161 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<div align="center">
+<p style="color: green"><%= notice %></p>
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Reportes</a></li>
+          <li class="breadcrumb-item active">Listar reporte</li>
+        </ol>
+<h4>Reportes</h4>
+<input type="text" id="datepicker" > 
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                 
+                  <p class="card-description">
+                    
+                  </p>
+                  <div class="table-responsive pt-3">
+
+                  <table class="table table-bordered" id="tablareportes">
+                  <thead class="thead-blue" >
+    <tr>
+    <th data-data="id_reporte">IDENTIFICADOR</th>
+      <th data-data="fecha">Fecha</th>
+      <th data-data="observaciones">Observaciones</th>
+      <th data-data="tipo_problema">Tipo problema</th>
+      <th data-data="id_mantenimiento">Mantenimiento</th>
+      <th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"></th>
+    </tr>
+  </thead>
+ 
+<% @reportes.each do |reportes| %>
+
+<tr>
+      <td><%= reportes.id_reporte %></td>
+      <td><%= reportes.fecha %></td>
+      <td><%= reportes.observaciones %></td>
+      <td><%= reportes.tipo_problema %></td>
+      <td><%= reportes.id_mantenimiento %></td>
+      <td>
+        <a href="<%= edit_reporte_path(reportes)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
+        <a  class="mostrar"  <%= link_to ({:action => :show, :id => reportes.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>
+        <a class="eliminar" <%= link_to ({ :action => :destroy, :id => reportes.id })do%>
+                      <i class="bi bi-trash"></i>
+                      <%end%>
+                      </a>
+             
+       </td>
+
+</tr>
+</div>
+
+<%end%>
+
+
+<a href="reportes/new" class="new"><i class="bi bi-plus-circle-fill"></i></a>
+
+
+</div>
+
+<script>
+            $(document).ready(function() {
+              var oTable = $("#tablareportes").DataTable({
+                
+                language: {
+                  url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/es-MX.json'
+              },
+              
+
+          responsive: "true",
+          dom: 'Bfrtilp',    
+                buttons:[ 
+        {
+          extend:    'excelHtml5',
+          text:      '<i class="bi bi-file-earmark-excel"></i> ',
+          titleAttr: 'Exportar a Excel',
+          className: 'btn btn-success'
+        },
+        {
+          extend:    'pdfHtml5',
+          text:      '<i class="bi bi-file-earmark-pdf"></i> ',
+          titleAttr: 'Exportar a PDF',
+          className: 'btn btn-danger'
+        },
+        {
+          extend:    'print',
+          text:      '<i class="bi bi-printer"></i> ',
+          titleAttr: 'Imprimir',
+          className: 'btn btn-info'
+        },
+      ],
+                columnDefs: [ {
+            sortable: false,
+            "class": "index",
+            targets: 0
+        } ],
+        order: [[ 1, 'asc' ]],
+        fixedColumns: true
+        } );
+ 
+    oTable.on( 'order.dt search.dt', function () {
+        oTable.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+            }); 
+           oTable=   $("#datepicker").daterangepicker({
+            startDate: moment("<%= l @start_date, format: '%Y-%-%d' %>"),
+            endDate: moment("<%= l @end_date, format: '%Y-%-%d'  %>"),
+            "locale": {
+            "format": "YYYY-MM-DD",
+            "separator": " - ",
+            "applyLabel": "Guardar",
+            "cancelLabel": "Cancelar",
+            "fromLabel": "Desde",
+            "toLabel": "Hasta",
+            "customRangeLabel": "Personalizar",
+            "daysOfWeek": [
+                "Do",
+                "Lu",
+                "Ma",
+                "Mi",
+                "Ju",
+                "Vi",
+                "Sa"
+            ],
+            "monthNames": [
+                "Enero",
+                "Febrero",
+                "Marzo",
+                "Abril",
+                "Mayo",
+                "Junio",
+                "Julio",
+                "Agosto",
+                "Setiembre",
+                "Octubre",
+                "Noviembre",
+                "Diciembre"
+            ],
+            "firstDay": 1
+        },
+        "startDate": "2016-01-01",
+        "endDate": "2016-01-07",
+        "opens": "center"
+    },
+ 
+              function(start, end, label) {
+    
+              $("#start").val(start.format('YYYY-MM-DD'));
+              $("#end").val(end.format('YYYY-MM-DD'));
+
+              $("form").submit();
+  });
+          
+           
+ </script>
+
+ 
+

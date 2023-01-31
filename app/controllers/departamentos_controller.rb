@@ -1,7 +1,7 @@
 class DepartamentosController < ApplicationController
- 
+  load_and_authorize_resource
   before_action :authenticate_usuario!
-  #load_and_authorize_resource params_method: :departamento_params
+  
 
   # GET /departamentos or /departamentos.json
   def index
@@ -10,6 +10,7 @@ class DepartamentosController < ApplicationController
 
   # GET /departamentos/1 or /departamentos/1.json
   def show
+    @departamento = Departamento.find(params[:id])
   end
 
   # GET /departamentos/new
@@ -19,40 +20,38 @@ class DepartamentosController < ApplicationController
 
   # GET /departamentos/1/edit
   def edit
+    @departamento = Departamento.find(params[:id])
   end
 
   # POST /departamentos or /departamentos.json
   def create
+   
     @departamento = Departamento.new(departamento_params)
-
-    respond_to do |format|
-      if @departamento.save
-        format.html { redirect_to departamento_url(@departamento), notice: "El departamento se ha creado exitosamente." }
-        format.json { render :show, status: :created, location: @departamento }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @departamento.errors, status: :unprocessable_entity }
-      end
+     if @departamento.save
+        flash[:notice]= "El departamento fue guardado con exito"
+        redirect_to departamentos_path
+        else
+       flash[:notice]= "Error al guardar el nuevo departamento"
+       render :new 
     end
   end
 
   # PATCH/PUT /departamentos/1 or /departamentos/1.json
   def update
-    authorize! :update, @equipos
-    respond_to do |format|
+   @departamento= Departamento.find(params[:id])
+  
       if @departamento.update(departamento_params)
-        format.html { redirect_to departamento_url(@departamento), notice: "El departamento se ha actualizado correctamente." }
-        format.json { render :show, status: :ok, location: @departamento }
+       flash[:notice] = "El departamento se ha actualizado correctamente." 
+       redirect_to departamentos_path
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @departamento.errors, status: :unprocessable_entity }
-      end
+      flash[:error] = "No se puedo actualizar"
+      render :edit
     end
   end
 
   # DELETE /departamentos/1 or /departamentos/1.json
   def destroy
-    authorize! :destroy, @equipos
+   
     @departamento.destroy
 
     respond_to do |format|
@@ -63,12 +62,11 @@ class DepartamentosController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_departamento
-      @departamento = Departamento.find(params[:id])
-    end
+    
 
     # Only allow a list of trusted parameters through.
     def departamento_params
       params.require(:departamento).permit(:nombre, :num_equipo, :id_area)
     end
-end
+  
+  end 

@@ -1,0 +1,26 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Solicitud</a></li>
+          <li class="breadcrumb-item active">Caracteristicas solicitud</li>
+        </ol>
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+
+<h4 class="text">Caracteristicas solicitud <%= @solicitud.id_solicitud %> </h4>
+</div>
+ <div class="probar">
+
+<p style="color: green"><%= notice %></p>
+
+<%= render @solicitud %>
+
+<div>
+  <%= link_to "Editar solicitud", edit_solicitud_path(@solicitud) %> |
+  <%= link_to "Regresar solicitud", solicituds_path %>
+
+  <%= button_to "Eliminar solicitud", @solicitud, method: :delete %>
+</div>

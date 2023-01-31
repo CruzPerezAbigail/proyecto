@@ -1,4 +1,5 @@
 class MarcasController < ApplicationController
+  load_and_authorize_resource
   before_action :set_marca, only: %i[ show edit update destroy ]
 
   # GET /marcas or /marcas.json
@@ -26,7 +27,7 @@ class MarcasController < ApplicationController
 
     respond_to do |format|
       if @marca.save
-        format.html { redirect_to marca_url(@marca), notice: "Marca was successfully created." }
+        format.html { redirect_to marca_url(@marca), notice: "Marca se creó con éxito." }
         format.json { render :show, status: :created, location: @marca }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +40,7 @@ class MarcasController < ApplicationController
   def update
     respond_to do |format|
       if @marca.update(marca_params)
-        format.html { redirect_to marca_url(@marca), notice: "Marca was successfully updated." }
+        format.html { redirect_to marca_url(@marca), notice: "Marca se actualizó con éxito." }
         format.json { render :show, status: :ok, location: @marca }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +54,7 @@ class MarcasController < ApplicationController
     @marca.destroy
 
     respond_to do |format|
-      format.html { redirect_to marcas_url, notice: "Marca was successfully destroyed." }
+      format.html { redirect_to marcas_url, notice: "Marca fue eliminada con éxito." }
       format.json { head :no_content }
     end
   end

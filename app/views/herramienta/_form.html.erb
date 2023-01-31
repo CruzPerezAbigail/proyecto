@@ -1,7 +1,19 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+<h4 class="text">Herramienta </h4>
+</div>
+ <div class="probar">
+
 <%= form_with(model: herramientum) do |form| %>
   <% if herramientum.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(herramientum.errors.count, "error") %> prohibited this herramientum from being saved:</h2>
+      
 
       <ul>
         <% herramientum.errors.each do |error| %>
@@ -10,28 +22,38 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :nombre, style: "display: block" %>
-    <%= form.text_field :nombre %>
+<br/>
+  <div class="form-group row">
+    <%= form.label :nombre, class:'col-sm-2' %>
+    <div class="col-sm-4">
+    <%= form.text_field :nombre, class:'form-control' %>
+  </div>
   </div>
 
-  <div>
-    <%= form.label :caracteristicas, style: "display: block" %>
-    <%= form.text_area :caracteristicas %>
+  <div class="form-group row">
+    <%= form.label :caracteristicas, class:'col-sm-2'%>
+    <div class="col-sm-4">
+    <%= form.text_area :caracteristicas, class:'form-control' %>
+  </div>
   </div>
 
-  <div>
-    <%= form.label :existencia, style: "display: block" %>
-    <%= form.number_field :existencia %>
+  <div class="form-group row" >
+    <%= form.label :existencia, class:'col-sm-2'%>
+    <div class="col-sm-4">
+    <%= form.number_field :existencia , class:'form-control'%>
+  </div>
   </div>
 
-  <div>
-    <%= form.label :estatus, style: "display: block" %>
-    <%= form.select :estatus, ["Guardado", "Activo", "Inactivo"], prompt: "Seleccione el estatus" %>
+  <div class="form-group row">
+    <%= form.label :estatus, class:'col-sm-2' %>
+    <div class="col-sm-4">
+    <%= form.select :estatus, ["Bueno", "Nuevo ", "Regular"], prompt: "Seleccione el estatus", class:'form-control' %>
   </div>
-
+  </div>
+  
+<br/>
   <div>
   <button class="btn btn-info" <%= form.submit %> Guardar </button>
+  <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
   </div>
 <% end %>

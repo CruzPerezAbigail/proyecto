@@ -3,8 +3,6 @@
 <%= render @licencium %>
 
 <div>
-  <%= link_to "Editar licencia", edit_licencium_path(@licencium) %> |
-  <%= link_to "Regresar a  licencia", licencia_path %>
-
-  <%= button_to "Eliminar la licencia", @licencium, method: :delete %>
+   <%= link_to "Lista de Licencias", @licencium %> |
+  <%= link_to "Regresar a licencia", licencia_path %>
 </div>

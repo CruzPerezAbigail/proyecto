@@ -17,7 +17,7 @@ class DepartamentosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create departamento" do
     assert_difference("Departamento.count") do
-      post departamentos_url, params: { departamento: { area: @departamento.area, nombre: @departamento.nombre, num_equipo: @departamento.num_equipo } }
+      post departamentos_url, params: { departamento: { areas_id: @departamento.areas_id, nombre: @departamento.nombre, num_equipo: @departamento.num_equipo } }
     end
 
     assert_redirected_to departamento_url(Departamento.last)
@@ -34,7 +34,7 @@ class DepartamentosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update departamento" do
-    patch departamento_url(@departamento), params: { departamento: { area: @departamento.area, nombre: @departamento.nombre, num_equipo: @departamento.num_equipo } }
+    patch departamento_url(@departamento), params: { departamento: { areas_id: @departamento.areas_id, nombre: @departamento.nombre, num_equipo: @departamento.num_equipo } }
     assert_redirected_to departamento_url(@departamento)
   end
 

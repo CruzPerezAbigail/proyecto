@@ -1,6 +1,11 @@
-<div align="center">
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Licencia</a></li>
+          <li class="breadcrumb-item active">Registrar nueva licencia</li>
+        </ol>
 
-<h1>Nueva Licencia</h1>
 
 <%= render "form", licencium: @licencium %>
 
@@ -10,4 +15,3 @@
 <%= link_to "Regresar a licencias ", licencia_path %>
 </div>
 
-</div>

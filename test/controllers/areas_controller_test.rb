@@ -17,7 +17,7 @@ class AreasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create area" do
     assert_difference("Area.count") do
-      post areas_url, params: { area: { departamentos_id: @area.departamentos_id, nombre: @area.nombre } }
+      post areas_url, params: { area: { nombre: @area.nombre } }
     end
 
     assert_redirected_to area_url(Area.last)
@@ -34,7 +34,7 @@ class AreasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update area" do
-    patch area_url(@area), params: { area: { departamentos_id: @area.departamentos_id, nombre: @area.nombre } }
+    patch area_url(@area), params: { area: {  nombre: @area.nombre } }
     assert_redirected_to area_url(@area)
   end
 

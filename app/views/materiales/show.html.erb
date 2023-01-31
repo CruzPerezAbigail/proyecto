@@ -1,10 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
 
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Material</a></li>
+          <li class="breadcrumb-item active">Caracteristicas material</li>
+        </ol>
+                  <h4 class="text">Material  <%= @materiale.id_material%> </h4>
+</div>
+<p style="color: green"><%= notice %></p>
+<div class="probar">
 <%= render @materiale %>
 
 <div>
-  <%= link_to "Edit this materiale", edit_materiale_path(@materiale) %> |
-  <%= link_to "Back to materiales", materiales_path %>
+  <%= link_to "Editar material", edit_materiale_path(@materiale) %> |
+  <%= link_to "Lista", materiales_path %>
 
-  <%= button_to "Destroy this materiale", @materiale, method: :delete %>
+  <%= button_to "Eliminar material", @materiale, method: :delete %>
 </div>

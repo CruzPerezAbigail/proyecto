@@ -26,6 +26,7 @@
     <th>Apellido materno</th>
     <th>Correo</th>
     <th>Tipo usuario </th>
+    <th>Admin </th>
     <th>Acciones</th>
     
   </tr>
@@ -38,6 +39,7 @@
     <td><%= usuarios.apellidodos %></td>
     <td><%= usuarios.email %></td>
     <td><%= usuarios.role  %></td>
+    <td><%= usuarios.admin%>
     <td>
     <% if can? :edit, @usuarios%>
                   <a href="<%= edit_usuario_path(usuarios)%>" class="edit"><i class="bi bi-pencil-square"></i></a>

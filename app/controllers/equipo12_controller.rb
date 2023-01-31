@@ -27,6 +27,7 @@ class Equipo12Controller < ApplicationController
     else 
       redirect_to equipo12_index_url, alert: "No autorizado"
   end
+end 
 
   def create
     

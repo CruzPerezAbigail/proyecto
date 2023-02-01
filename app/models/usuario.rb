@@ -14,7 +14,7 @@ class Usuario < ApplicationRecord
 
     ROLES = %w[admin personal agente]
 
-
+     delegate :can? , :cannot?, to: :ability
 
     ROLES.each do |role_name|
       define_method "#{role_name}?" do 
@@ -27,6 +27,11 @@ class Usuario < ApplicationRecord
    #def set_default_role
     #self.role ||= :usuario
    #end 
+
+   def ability 
+    @ability ||= Ability.new(self)
+   end 
+
       
 end 
 

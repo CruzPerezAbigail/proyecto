@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
          before_action :authenticate_usuario!, :except => [:find]
         
          rescue_from CanCan::AccessDenied do |exception|
-          redirect_to '/', :alert => exception.message
+          redirect_to '/', :notice => exception.message
         end
 
 
         def current_ability
-          @current_ability ||= Ability.new(current_user)
+          @current_ability ||= Ability.new(current_usuario)
         end
         
          protected

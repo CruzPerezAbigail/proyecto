@@ -6,7 +6,7 @@ class Equipo12Controller < ApplicationController
   before_action :set_areas, only: [:new, :edit]
   before_action :set_marcas, only: [:new, :edit]
   before_action :set_departamentos, only: [:new, :edit]
-
+  has_many :mantenimientos , autosave: true
 
   def index
     @equipo12 = Equipo12.all
@@ -14,18 +14,20 @@ class Equipo12Controller < ApplicationController
   end
 
   def show
-     
+     if current_usuario.admin?
       @equipo12 = Equipo12.find(params[:id])
     @equipo12= Equipo12.get_mantenimientos
-    
+     else 
+
+     end 
 
   end
 
   def new
-    if current_usuario.admin?
+    if current_usuario.admin
     @equipo12 = Equipo12.new 
     else 
-      redirect_to equipo12_index_url, alert: "No autorizado"
+      redirect_to equipo12_index_url, notice: "No autorizado"
   end
 end 
 
@@ -43,9 +45,11 @@ end
   end
 
   def edit
-    authorize! :update, @equipo12
+   if current_usuario.admin?
     @equipo12 = Equipo12.find(params[:id])
-   
+   else 
+    redirect_to equipo12_index_url, notice: "No autorizado"
+   end 
   end
 
   def update
@@ -61,11 +65,12 @@ end
   end
 
   def destroy
+    if current_usuario == @equipo12.usuario 
     @equipo12 = Equipo12.find(params[:id])
-    if @equipo12.delete
-      flash[:notice] ='EL EQUIPO SE HA ELIMINADO'
-      redirect_to equipo12_index_url
-    else 
+     @equipo12.delete
+      redirect_to equipo12_index_url, notice: 'EL EQUIPO SE HA ELIMINADO'
+    else
+      redirect_to equipo12_index_url, notice: 'No autorizado'
       flash[:error] ='ERROR AL ELIMINAR'
       render :destroy
   end

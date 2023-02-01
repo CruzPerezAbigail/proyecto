@@ -2,7 +2,7 @@ class Equipo12 < ActiveRecord::Base
          Equipo12.order(created_at: :asc)
          validates  :id_marcas, :id_departamentos, :id_tipo, :id_areas, :estatus, :presence => true 
          validates :serial, :uniqueness => true 
-         
+         belongs_to :mantenimiento , autosave: true
          
          
          def self.get_mantenimientos

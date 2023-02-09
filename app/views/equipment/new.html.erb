@@ -1,0 +1,21 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Equipo</a></li>
+          <li class="breadcrumb-item active">Registrar nuevo equipo</li>
+        </ol>
+                 
+</div>
+
+<%= render "form", equipment: @equipment %>
+
+<br>
+
+<div>
+  <%= link_to "Regresar a equipos", equipment_index_path %>
+</div>

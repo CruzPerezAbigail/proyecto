@@ -1,0 +1,137 @@
+<%= stylesheet_link_tag "style" %>
+</head>
+
+ <div class="probar">
+<%= form_with(model: equipment) do |f| %>
+  <% if equipment.errors.any? %>
+    <div style="color: red">
+      
+      <ul>
+        <% equipment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br>
+  <div class="form-group row">
+                           <%= f.label :Modelo , class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%= f.text_field :modelo , class:'form-control'%>
+                           </div>
+                           </div>
+
+                           <div class="form-group row">
+                           <%= f.label :Serial , class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%= f.text_field :serial , class:'form-control'%>
+                           </div>
+                       </div>
+
+                       <div class="form-group row ">
+                       <%= f.label :brand_id,"Marca" , class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <div class="placeholder">
+                       <%= f.collection_select( :brand_id, Brand.all{|m| [m.nombre, m.id_marca]}, :id, :nombre, prompt: "Seleccione la marca")%>
+                       </div>
+                       </div>
+              </div>
+                       <div class="form-group row">
+                       <%= f.label :departament_id, "Departamento" , class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <div class="placeholder">
+                       <%= f.collection_select( :departament_id, Departamento.all{|d| [d.nombre, d.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione el departamento")%>
+                        </div>
+                       </div>
+                            </div>
+
+                            <div class="form-group row">
+                           <%= f.label :zone_id, "Area:" , class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <div class="placeholder">
+                           <%= f.collection_select(:zone_id, Zone.all{|a| [a.nombre]}, :id, :nombre, class:'form-control', prompt: "Seleccione el área")%>
+                           </div>
+                           </div>
+                           </div>
+
+
+                            <div class="form-group row">
+                            <%= f.label :shape_id ,'Tipo:', class:'col-sm-2' %>
+                             <div class="col-sm-4">
+                             <div class="placeholder">
+                             <%=f.collection_select(:shape_id, Shape.all{|a| [a.nombre]}, :id, :nombre, class:'form-control', prompt: "Selecione un tipo" )%>
+                                 </div> 
+                             </div>
+                             </div>
+
+                           
+           
+                           
+                              <div class="form-group row">
+                              <%= f.label :estatus , "Estatus:" , class:'col-sm-2'%>
+                              
+                                  <div class="form-group col-sm-4">
+                                  <div class="placeholder">
+                                  <%= f.select :estatus, ["GUARDADO", "ACTIVO", "INACTIVO"], prompt: "Seleccione el estado" %>
+                                  </div>
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                              <%= f.label :Observaciones , class:'col-sm-2'%>
+                              <div class="col-sm-4">
+                              <%= f.text_field :observaciones , class:'form-control'%>
+                              </div>
+                          </div>
+                          
+
+                          <div class="form-group row ">
+                          <%= f.label :RAM , class:'col-sm-2'%>
+                              <div class="col-sm-4">
+                              <%= f.text_field :ram , class:'form-control'%>
+                                 </div>
+                          </div>
+           
+
+                          <div class="form-group row">
+                          <%= f.label :Disco_duro , class:'col-sm-2' %>
+                             
+                              <div class="col-sm-4">
+                              <%= f.text_field :disco_duro , class:'form-control'%>
+                              </div>
+                          </div>
+
+                          <div class="form-group row">
+                          <%= f.label :fecharegistro, class:'col-sm-2' %>
+                             
+                              <div class="col-sm-4">
+                              <%= f.date_field :fecharegistro , class:'form-control'%>
+                              </div>
+                          </div>
+                          
+                        
+                          <div class="form-group row">
+                          <%= f.label :licence_id, "Licencia:"  , class:'col-sm-2'%>
+                              <div class="col-sm-4">
+                              <div class="placeholder">
+                              <%= f.collection_select(:licence_id, Licence.all.order(:nombre), :id, :nombre, class:'form-control', prompt: "Seleccione una licencia")%>
+                                  </div>
+                              </div>
+                          </div> 
+                        
+                        <br/>
+                         <div>
+                 <button type="submit" class="btn btn-info">Guardar</button>
+                 <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+           
+                                 
+                                  
+                          </div>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+  
+              <% end %>
+              </form>
+              <br>
+              

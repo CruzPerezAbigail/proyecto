@@ -6,7 +6,7 @@ class Equipo12Controller < ApplicationController
   before_action :set_areas, only: [:new, :edit]
   before_action :set_marcas, only: [:new, :edit]
   before_action :set_departamentos, only: [:new, :edit]
-  has_many :mantenimientos , autosave: true
+ 
 
   def index
     @equipo12 = Equipo12.all
@@ -24,11 +24,9 @@ class Equipo12Controller < ApplicationController
   end
 
   def new
-    if current_usuario.admin
+    
     @equipo12 = Equipo12.new 
-    else 
-      redirect_to equipo12_index_url, notice: "No autorizado"
-  end
+    
 end 
 
   def create

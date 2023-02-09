@@ -1,0 +1,24 @@
+
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Marca</a></li>
+          <li class="breadcrumb-item active">Caracteristicas de la marca</li>
+        </ol>
+                  <h4 class="text">Marca <%= @brand.id%> </h4>
+</div>
+ <div class="probar">
+ <p style="color: green"><%= notice %></p>
+
+<%= render @brand %>
+
+<div>
+  <%= link_to "Editar marca", edit_brand_path(@brand),  class: "btn btn-success" %>  |
+  <%= link_to "Regresar", brands_path,  class: "btn btn-success" %>|
+  <%= link_to "Eliminar la marca", @brand, method: :delete, data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger" %>
+</div>

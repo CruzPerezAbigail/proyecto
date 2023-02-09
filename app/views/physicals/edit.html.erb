@@ -1,0 +1,15 @@
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Material</a></li>
+          <li class="breadcrumb-item active">Editar material</li>
+        </ol>
+                  <h4 class="text">Material  <%= @physical.id%> </h4>
+</div>
+
+<%= render "form", physical: @physical %>
+
+<br>
+
+<div>
+  <%= link_to "Ver material", @physical %> |
+  <%= link_to "Lista de materiales", physicals_path %>
+</div>

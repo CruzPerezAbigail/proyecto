@@ -5,9 +5,7 @@ class Usuario < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
  
-         validates :rfc, format: { with: /[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})/, message: "Formato no compatible" }
-                                            
-
+    validates :rfc, format: { with: /[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})/, message: "Formato no compatible" }
     validates :rfc, :uniqueness => true 
 
     
@@ -21,17 +19,13 @@ class Usuario < ApplicationRecord
         role == role_name
       end 
     end 
-   #enum role: [:usuario, :agente, :admin]
-   #after_initialize :set_default_role, :if => :new_record?
-
-   #def set_default_role
-    #self.role ||= :usuario
-   #end 
+    
 
    def ability 
     @ability ||= Ability.new(self)
    end 
-
+   
+    belongs_to :maintenance, autosave: true
       
 end 
 

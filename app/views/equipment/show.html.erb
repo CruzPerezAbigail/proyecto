@@ -1,0 +1,113 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Equipo</a></li>
+          <li class="breadcrumb-item active">Caracteristicas del equipo</li>
+        </ol>
+               <h4 class="text">Equipo <%= @equipment.id%> </h4>
+</div>
+ <div class="probar">
+ <p style="color: green"><%= notice %></p>
+ <div class="form-group row ">
+ <section>
+                           <div class="form-group row ">
+                           <%= label :Marca ,'Marca', class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%= @equipment.brand.nombre%>
+                           </div>
+                          </div>
+
+                           <div class="form-group row">
+                           <%= label :Modelo ,'Modelo', class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%= @equipment.modelo%>
+                           </div>
+                           </div>
+
+                           <div class="form-group row">
+                           <%= label :Serial ,'Serial', class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%= @equipment.serial%>
+                           </div>
+                       </div>
+
+                       <div class="form-group row">
+                       <%= label :Edificio ,'Edificio', class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <%= @equipment.departament.nombre %>
+                           
+                       
+                       </div>
+                            </div>
+                            <div class="form-group row">
+                            <%= label :tipo ,'Tipo:', class:'col-sm-2' %>
+                             <div class="col-sm-4">
+                             <%= @equipment.shape.nombre%>
+                                  
+                             </div>
+                             </div>
+
+                           <div class="form-group row">
+                           <%= label :Area ,'Area', class:'col-sm-2'%>
+                           <div class="col-sm-4">
+                           <%=@equipment.zone.nombre%>
+                           </div>
+                           </div>
+           
+                           
+                              <div class="form-group row">
+                              <%= label :Estatus ,'Estatus' ,class:'col-sm-2'%>
+                                  <div class="form-group col-sm-4">
+                                 <%= @equipment.estatus %>
+                                  </div>
+                              </div>
+
+                              <div class="form-group row">
+                              <%= label :Observaciones ,'Observaciones', class:'col-sm-2'%>
+                              <div class="col-sm-4">
+                              <%= @equipment.observaciones%>
+                              </div>
+                          </div>
+                          
+
+                          <div class="form-group row ">
+                          <%= label :RAM ,'RAM', class:'col-sm-2'%>
+                              <div class="col-sm-4">
+                              <%= @equipment.ram%>
+                                 </div>
+                          </div>
+           
+
+                          <div class="form-group row">
+                          <%= label :Disco_duro,'Disco duro', class:'col-sm-2' %>
+                             
+                              <div class="col-sm-4">
+                              <%= @equipment.disco_duro%>
+                              </div>
+                          </div>
+                          
+                             <br>
+                             <br>
+           
+                             <div>
+                             
+                             <%= link_to "Regresar a equipo", equipment_index_path , class: "btn btn-success btn-xs round" %>
+                             <% if can? :edit , @equipment%>
+                             <%= link_to "Editar  equipo", edit_equipment_path(@equipment), class: "btn btn-success btn-xs round" %> 
+                             <%end %>
+                             <%if can? :destroy, @equipo12%>
+                             <%= button_to "Eliminar equipo", equipment_path(@equipment), method: :delete, data: { confirm: "Esta seguro de eliminar"}, class: "btn btn-waring btn-xs round" %>
+                             <%end%>
+                             </div>
+                                  <br>
+                                  <br>
+                             
+                          </div>
+                      </section>
+
+

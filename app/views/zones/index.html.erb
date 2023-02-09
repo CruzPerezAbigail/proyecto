@@ -1,0 +1,87 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<div align="center">
+<p style="color: green"><%= notice %></p>
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Areas</a></li>
+          <li class="breadcrumb-item active">Lista areas</li>
+        </ol>
+<h4>Àreas</h4>
+
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                 
+                  <p class="card-description">
+                    
+                  </p>
+                  <div class="table-responsive pt-3">
+
+                  <table class="table table-bordered" id="tableareas">
+                  <thead class="thead-blue" >
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">NOMBRE</th>
+                      <th scope="col">Departamento</th>
+                      <th scope="col">ACCIONES</th>
+                     
+                      
+                    </tr>
+                  </thead>
+                  
+                  <% @zones.each do |zone| %>
+                   
+                    <tr>
+                        <td><%= zone.id %></td>
+                        <td><%= zone.nombre %></td>
+                        <td><%= zone.departament.nombre %></td>
+                      <td > 
+                      <%if can? :edit, Zone%>
+                      <a href="<%= edit_zone_path(zone)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
+                      <%end%>
+                      <%if can? :show, Zone%>
+                      <a href="<%= zone_path(zone)%>" class="mostrar"><i class="bi bi-eye-fill"></i></a>  
+                      <%end%>
+                      <%if can? :destroy, Zone%>
+                   <a class="eliminar" <%= link_to ({ :action => :destroy, :id => zone.id })do%>
+                  <i class="bi bi-trash"></i>
+                  <%end%>
+                  <% end %>
+                  </a>
+                       </td>
+                      </tr>
+                </div>
+                
+                
+                <% end %>
+                    <a href="zones/new" class="new"><i class="bi bi-plus-circle-fill"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<script>
+            $(document).ready(function() {
+              var oTable = $("#tableareas").DataTable({
+                language: {
+                  url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/es-MX.json'
+              }
+              });
+      } );
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

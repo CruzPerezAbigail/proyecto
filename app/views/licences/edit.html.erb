@@ -1,0 +1,14 @@
+
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Licencias</a></li>
+          <li class="breadcrumb-item active">Editar licencia</li>
+        </ol>
+                  <h4 class="text">Area <%= @licence.id%> </h4>
+<%= render "form", licence: @licence %>
+
+<br>
+
+<div>
+  <%= link_to "Ver licencia ", @licence %> |
+  <%= link_to "Regresar a licencias", licences_path %>
+</div>

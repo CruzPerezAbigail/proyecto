@@ -1,0 +1,25 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Licencias</a></li>
+          <li class="breadcrumb-item active">Caracteristicas de la licencia</li>
+        </ol>
+                  <h4 class="text">Licencia <%= @licence.id%> </h4>
+</div>
+ <div class="probar">
+
+<p style="color: green"><%= notice %></p>
+
+
+<%= render @licence %>
+<div>
+  <%= link_to "Editar licencia", edit_licence_path(@licence),  class: "btn btn-success" %>|
+  <%= link_to "Lista", licences_path,  class: "btn btn-success" %> |
+
+  <%= link_to "Eliminar licencia", @licence, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger" %>
+</div>

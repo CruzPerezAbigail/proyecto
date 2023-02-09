@@ -1,0 +1,57 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+<h4 class="text">Nuevo Insumo </h4>
+</div>
+ <div class="probar">
+<%= form_with(model: resource) do |form| %>
+  <% if resource.errors.any? %>
+    <div style="color: red">
+     
+      <ul>
+        <% resource.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br/>
+  <div class="form-group row">
+    <%= form.label :nombre, class:'col-sm-2' %>
+    <div class="col-sm-4">
+    <%= form.text_field :nombre, class:'form-control', id:"nombre" %>
+  </div>
+  </div>
+
+  <div  class="form-group row">
+    <%= form.label :caracteristicas, class:'col-sm-2'  %>
+    <div class="col-sm-4">
+    <%= form.text_field :caracteristicas , class:'form-control', id:"caracteristicas"%>
+  </div>
+  </div>
+
+  <div  class="form-group row">
+    <%= form.label :existencia, class:'col-sm-2'  %>
+    <div class="col-sm-4">
+    <%= form.number_field :existencia, class:'form-control', id: "existencia" %>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :estatus, class:'col-sm-2' %>
+    <div class="col-sm-4">
+    <%= form.select :estatus, ["Guardado", "En uso", "Nuevo"], prompt: "Seleccione el estatus" , class: 'form-control', id:"estatus" %>
+  </div>
+  </div>
+  <br/>
+
+  <div>
+  <button class="btn btn-info" <%= form.submit %> Guardar </button>
+  <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+  </div>
+<% end %>

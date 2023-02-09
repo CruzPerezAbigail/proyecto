@@ -15,23 +15,13 @@ class Ability
                      can :manage, :all
 
               
-            elsif usuario.role == "agente"
+            elsif usuario.role == "Agente"
               alias_action :create, :read, :update, :to => :cru
-                     can :cru, Solicitud
-                     can :cru, Equipo12 
-                     can :cru, Mantenimiento
-                     can :cru, Reporte 
-                     can :cru, Licencium
-                     can :cru, Tipo
-                     can :cru, Marca
-                     can :cru, Insumo
-                     can :cru, Materiale
-                     can :cru, Departamento
-                     cannot :manage, Usuario
+                     can :manage, :all
 
        
 
-              else usuario.role == "personal"
+              else usuario.role == "Personal"
         
                      alias_action :create, :read, :update, :to => :cru
                      can :cru, Solicitud

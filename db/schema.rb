@@ -10,20 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_31_161706) do
-  create_table "areas", primary_key: "id_area", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_02_09_175025) do
+  create_table "areas", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "departamentos", primary_key: "id_departamento", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
-    t.integer "num_equipo"
-    t.integer "id_area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id_area"], name: "fk_rails_b6ab1a9d32"
+  end
+
+  create_table "departamentos", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "num_equipo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "areas_id", null: false
+    t.index ["areas_id"], name: "index_departamentos_on_areas_id"
+  end
+
+  create_table "departaments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "num_equipos"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "equipment", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "estatus"
+    t.string "modelo"
+    t.string "serial"
+    t.string "observaciones"
+    t.string "ram"
+    t.string "disco_duro"
+    t.date "fecharegistro"
+    t.bigint "departament_id", null: false
+    t.bigint "zone_id", null: false
+    t.bigint "brand_id", null: false
+    t.bigint "shape_id", null: false
+    t.bigint "licence_id", null: false
+    t.index ["brand_id"], name: "index_equipment_on_brand_id"
+    t.index ["departament_id"], name: "index_equipment_on_departament_id"
+    t.index ["licence_id"], name: "index_equipment_on_licence_id"
+    t.index ["shape_id"], name: "index_equipment_on_shape_id"
+    t.index ["zone_id"], name: "index_equipment_on_zone_id"
   end
 
   create_table "equipo12s", primary_key: "serie", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -66,12 +99,39 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_31_161706) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "licences", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.date "anio"
+    t.string "num_licencia"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "licencia", primary_key: "id_licencia", id: { type: :string, limit: 20 }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.integer "anio"
     t.string "num_licencia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "maintenances", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "fecha_inicio"
+    t.datetime "fecha_fin"
+    t.text "observaciones"
+    t.string "tipo_mantenimiento"
+    t.string "equipment_id", null: false
+    t.bigint "zone_id", null: false
+    t.bigint "physical_id", null: false
+    t.bigint "tool_id", null: false
+    t.bigint "resources_id", null: false
+    t.string "usuarios_id", null: false
+    t.index ["equipment_id"], name: "index_maintenances_on_equipment_id"
+    t.index ["physical_id"], name: "index_maintenances_on_physical_id"
+    t.index ["resources_id"], name: "index_maintenances_on_resources_id"
+    t.index ["tool_id"], name: "index_maintenances_on_tool_id"
+    t.index ["usuarios_id"], name: "index_maintenances_on_usuarios_id"
+    t.index ["zone_id"], name: "index_maintenances_on_zone_id"
   end
 
   create_table "mantenimientos", primary_key: "id_mantenimiento", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -109,6 +169,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_31_161706) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "physicals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.string "caracteristicas"
+    t.integer "existencia"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reportes", primary_key: "id_reporte", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "fecha"
     t.text "observaciones"
@@ -117,6 +185,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_31_161706) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["id_mantenimiento"], name: "id_mantenimiento_idx"
+  end
+
+  create_table "resources", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.string "caracteristica"
+    t.integer "existencia"
+    t.string "estatus"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shapes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "solicituds", primary_key: "id_solicitud", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -135,7 +218,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_31_161706) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "usuarios", primary_key: "rfc", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tools", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.string "caracteristicas"
+    t.integer "existencia"
+    t.string "estatus"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "usuarios", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -152,18 +244,36 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_31_161706) do
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "departamentos", "areas", column: "id_area", primary_key: "id_area"
-  add_foreign_key "equipo12s", "areas", column: "id_areas", primary_key: "id_area"
-  add_foreign_key "equipo12s", "departamentos", column: "id_departamentos", primary_key: "id_departamento"
+  create_table "zones", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "departament_id", null: false
+    t.index ["departament_id"], name: "index_zones_on_departament_id"
+  end
+
+  add_foreign_key "equipment", "brands"
+  add_foreign_key "equipment", "departaments"
+  add_foreign_key "equipment", "licences"
+  add_foreign_key "equipment", "shapes"
+  add_foreign_key "equipment", "zones"
+  add_foreign_key "equipo12s", "areas", column: "id_areas"
+  add_foreign_key "equipo12s", "departamentos", column: "id_departamentos"
   add_foreign_key "equipo12s", "licencia", column: "id_licencias", primary_key: "id_licencia"
   add_foreign_key "equipo12s", "marcas", column: "id_marcas", primary_key: "id_marca"
   add_foreign_key "equipo12s", "tipos", column: "id_tipo"
-  add_foreign_key "mantenimientos", "departamentos", column: "id_departamento", primary_key: "id_departamento"
+  add_foreign_key "maintenances", "equipment"
+  add_foreign_key "maintenances", "physicals"
+  add_foreign_key "maintenances", "resources", column: "resources_id"
+  add_foreign_key "maintenances", "tools"
+  add_foreign_key "maintenances", "usuarios", column: "usuarios_id"
+  add_foreign_key "maintenances", "zones"
   add_foreign_key "mantenimientos", "equipo12s", column: "serie", primary_key: "serie"
   add_foreign_key "mantenimientos", "herramienta", column: "id_herramienta", primary_key: "id_herramienta"
   add_foreign_key "mantenimientos", "insumos", column: "id_insumo", primary_key: "id_insumo"
   add_foreign_key "mantenimientos", "materiales", column: "id_materiales", primary_key: "id_material"
-  add_foreign_key "mantenimientos", "usuarios", column: "rfc", primary_key: "rfc"
+  add_foreign_key "mantenimientos", "usuarios", column: "rfc"
   add_foreign_key "reportes", "mantenimientos", column: "id_mantenimiento", primary_key: "id_mantenimiento", name: "id_mantenimiento"
-  add_foreign_key "solicituds", "usuarios", column: "rfc", primary_key: "rfc"
+  add_foreign_key "solicituds", "usuarios", column: "rfc"
+  add_foreign_key "zones", "departaments"
 end

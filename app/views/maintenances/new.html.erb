@@ -1,0 +1,22 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Mantenimiento</a></li>
+          <li class="breadcrumb-item active">Registrar nuevo mantenimiento</li>
+        </ol>
+                  <h4 class="text">Nuevo mantenimiento </h4>
+</div>
+ <div class="probar">
+
+<%= render "form", maintenance: @maintenance %>
+
+<br>
+
+<div>
+  <%= link_to "Lista de mantenimientos", maintenances_path %>
+</div>

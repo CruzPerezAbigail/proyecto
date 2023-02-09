@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
          before_action :authenticate_usuario!, :except => [:find]
         
          rescue_from CanCan::AccessDenied do |exception|
-          redirect_to '/', :notice => exception.message
+          redirect_to '/', :alert => exception.message
         end
 
 

@@ -1,0 +1,102 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Mantenimiento</a></li>
+          <li class="breadcrumb-item active"> Caracteristicas de mantenimiento</li>
+        </ol>
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+ <h4 class="text ">Mantenimiento <%= @maintenance.id %> </h4>
+</div>
+ <div class="probar">
+<p style="color: green"><%= notice %></p>
+
+<div class="container">
+     
+
+
+      
+
+      <div class="form-group row">
+      <%= label :fecha_inicio, 'Fecha de inicio', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.fecha_inicio%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :fecha_fin, 'Fecha final', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.fecha_fin%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :observaciones, 'Observaciones', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.observaciones%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :tipo_mantenimiento, 'Tipo mantenimieento', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.tipo_mantenimiento%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :equipment_id, 'Serie del equipo', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.equipment_id%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :zone_id, 'Departamento', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.zone.nombre%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :usuarios_id, 'Usuario', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.usuarios_id%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :physical_id, 'Materiales', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.physical.nombre%>
+      </div>
+      </div>
+
+
+      <div class="form-group row">
+      <%= label :tool_id, 'Herramienta', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.tool.nombre%>
+      </div>
+      </div>
+
+      <div class="form-group row">
+      <%= label :resources_id, 'Insumo', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.resources_id%>
+      </div>
+      </div>
+
+      <br>
+      
+
+<div>
+  <%= link_to "Editar mantenimiento", edit_maintenance_path(@maintenance), class: "btn btn-success btn-xs round" %> |
+  <%= link_to "Regresar ", maintenances_path, class: "btn btn-success btn-xs round" %>
+
+  <%= link_to "Eliminar mantenimiento", @maintenance, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger"%>
+</div>

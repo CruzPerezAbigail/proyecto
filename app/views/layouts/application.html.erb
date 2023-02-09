@@ -69,10 +69,10 @@
         </a>
         <ul id="areas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-          <a href="<%= new_area_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar áreas</a>
+          <a href="<%= new_zone_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar áreas</a>
           </li>
           <li>
-          <a href="<%= areas_path%>" class="edit"> <i class="bi bi-circle"></i>Listar áreas</a>
+          <a href="<%= zones_path%>" class="edit"> <i class="bi bi-circle"></i>Listar áreas</a>
           </li>
           <li>
             
@@ -85,13 +85,13 @@
       </a>
       <ul id="inventario-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-        <a href="<%=  equipo12_index_url%>" class="edit"> <i class="bi bi-circle"></i>Equipos</a>
+        <a href="<%=  equipment_index_path%>" class="edit"> <i class="bi bi-circle"></i>Equipos</a>
         </li>
          <li>
-          <a href="<%= herramienta_path%>" class="edit"> <i class="bi bi-circle"></i>Herramienta</a>
+          <a href="<%= tools_path%>" class="edit"> <i class="bi bi-circle"></i>Herramienta</a>
           </li>
           <li>
-          <a href="<%= materiales_path%>" class="edit"> <i class="bi bi-circle"></i> Materiales</a>
+          <a href="<%= physicals_path%>" class="edit"> <i class="bi bi-circle"></i> Materiales</a>
           </li>
         
       </ul>
@@ -104,11 +104,11 @@
         <ul id="equipo12-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
          
-          <a href="<%= new_equipo12_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar equipo</a>
+          <a href="<%= new_equipment_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar equipo</a>
             </a>
           </li>
           <li>
-          <a href="<%= equipo12_index_url%>" class="edit"> <i class="bi bi-circle"></i>Listar equipo</a>
+          <a href="<%= equipment_index_url%>" class="edit"> <i class="bi bi-circle"></i>Listar equipo</a>
           </a>
           </li>
           <li>
@@ -116,34 +116,34 @@
         </ul>
       </li>
 
-       <% if false %>
+       
        <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#licencia-nav" data-bs-toggle="collapse" href="">
         <i class="bi bi-card-list"></i><span>Licencias</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="licencia-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-          <a href="<%= new_licencium_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar licencia</a> 
+          <a href="<%= new_licence_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar licencia</a> 
           </li>
         
           <li>
-          <a href="<%= licencium_path%>" class="edit"> <i class="bi bi-circle"></i>Listar licencia </a>
+          <a href="<%= licences_path%>" class="edit"> <i class="bi bi-circle"></i>Listar licencia </a>
           </li>
           
             
         </ul>
       </li>
-<%end%>
+
       <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#departamento-nav" data-bs-toggle="collapse" href="">
       <i class="bi bi-building"></i><span>Departamentos</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="departamento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-        <a href="<%= new_departamento_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar departamento</a>
+        <a href="<%= new_departament_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar departamento</a>
         </li>
         <li>
-        <a href="<%= departamentos_path%>" class="edit"> <i class="bi bi-circle"></i>Listar departamentos</a>
+        <a href="<%= departaments_path%>" class="edit"> <i class="bi bi-circle"></i>Listar departamentos</a>
         </li>
         <li>
           
@@ -156,10 +156,10 @@
         </a>
         <ul id="tipos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-          <a href="<%= new_tipo_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar tipos</a> 
+          <a href="<%= new_shape_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar tipos</a> 
           </li>
           <li>
-          <a href="<%= tipos_path%>" class="edit"> <i class="bi bi-circle"></i>Listar tipos</a>
+          <a href="<%= shapes_path%>" class="edit"> <i class="bi bi-circle"></i>Listar tipos</a>
           </li>
           
             
@@ -173,10 +173,10 @@
         </a>
         <ul id="marcas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-          <a href="<%= new_marca_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar Marcas</a>
+          <a href="<%= new_brand_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar Marcas</a>
           </li>
           <li>
-          <a href="<%= marcas_path%>" class="edit"> <i class="bi bi-circle"></i>Listar Marcas</a>
+          <a href="<%= brands_path%>" class="edit"> <i class="bi bi-circle"></i>Listar Marcas</a>
           </li>
           <li>
             
@@ -188,10 +188,10 @@
         </a>
         <ul id="materiales-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-          <a href="<%= new_materiale_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar Material</a>
+          <a href="<%= new_physical_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar Material</a>
           </li>
           <li>
-          <a href="<%= materiales_path%>" class="edit"> <i class="bi bi-circle"></i>Listar Materiales</a>
+          <a href="<%= physicals_path %>" class="edit"> <i class="bi bi-circle"></i>Listar Materiales</a>
           </li>
           <li>
             
@@ -204,11 +204,11 @@
         </a>
         <ul id="herramienta-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-          <a href="<%= new_herramientum_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar herramienta</a>
+          <a href="<%= new_tool_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar herramienta</a>
           </li>
           
           <li>
-          <a href="<%= herramienta_path%>" class="edit"> <i class="bi bi-circle"></i>Listar herramienta</a>
+          <a href="<%= tools_path%>" class="edit"> <i class="bi bi-circle"></i>Listar herramienta</a>
           </li>
           <li>
             
@@ -221,10 +221,10 @@
         </a>
         <ul id="insumos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-          <a href="<%= new_insumo_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar Insumo</a>
+          <a href="<%= new_resource_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar Insumo</a>
           </li>
           <li>
-          <a href="<%= insumos_path%>" class="edit"> <i class="bi bi-circle"></i>Insumos</a>
+          <a href="<%= resources_path%>" class="edit"> <i class="bi bi-circle"></i>Insumos</a>
           </li>
           <li>
             
@@ -234,15 +234,15 @@
       
       
       <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#mantenimiento-nav" data-bs-toggle="collapse" href="">
+      <a class="nav-link collapsed" data-bs-target="#maintenances-nav" data-bs-toggle="collapse" href="">
       <i class="bi bi-pc-display"></i><span>Mantenimiento</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <ul id="mantenimiento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <ul id="maintenances-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-        <a href="<%=  new_mantenimiento_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar mantenimiento</a>
+        <a href="<%=  new_maintenance_path%>" class="edit"> <i class="bi bi-circle"></i>Registrar mantenimiento</a>
         </li>
         <li>
-        <a href="<%= mantenimientos_path%>" class="edit"> <i class="bi bi-circle"></i>Bitacora</a>
+        <a href="<%= maintenances_path%>" class="edit"> <i class="bi bi-circle"></i>Bitacora</a>
         </li> 
       </ul>
     </li>
@@ -302,21 +302,22 @@
                    </li>
                       <li class="nav-item active"><a class="nav-link" href="/">Inicio</span></a></li>
                      
-                      <li class="nav-item dropdown">
-                      <% if current_usuario%>
-                          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</a>
+                      <li class="nav-item active">
+                      <% if usuario_signed_in? %>
+                          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong><%= current_usuario.email %></strong></a>
                           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                          
                               <a class="dropdown-item" <%= link_to "Cerrar sesion ", destroy_usuario_session_path  %></a>
                               <a class="dropdown-item" <%=link_to "Mi cuenta", edit_usuario_registration_path %> </a>
-                              <a class="dropdown-item" href="#!">Another action</a>
+                              
+                              </li>
                              <%else%>
                              <li class="nav-item active">
                               <a class="dropdown-item" <%= link_to "Crear cuenta ",new_usuario_registration_path %></a>
                               <a class="dropdown-item" <%= link_to "Iniciar sesion  ",new_usuario_session_path %></a>
                               </li>
                               <%end %>
-                          </div>
-                      </li>
+
                   </ul>
               </div>
           </div>
@@ -324,10 +325,15 @@
       <!-- Page content-->
       <div class="container-fluid">
 
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
       
           <%= yield %>
-      </div>
-  </div>
+      
 </div>
 
 

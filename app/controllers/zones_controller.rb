@@ -1,0 +1,71 @@
+class ZonesController < ApplicationController
+  load_and_authorize_resource :except => :create 
+  before_action :set_zone, only: %i[ show edit update destroy ]
+
+  # GET /zones or /zones.json
+  def index
+    @zones = Zone.all
+  end
+
+  # GET /zones/1 or /zones/1.json
+  def show
+  end
+
+  # GET /zones/new
+  def new
+    @zone = Zone.new
+  end
+
+  # GET /zones/1/edit
+  def edit
+  end
+
+  # POST /zones or /zones.json
+  def create
+    @zone = Zone.new(zone_params)
+
+    respond_to do |format|
+      if @zone.save
+        format.html { redirect_to zone_url(@zone), notice: "El área fue creada con éxito." }
+        format.json { render :show, status: :created, location: @zone }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @zone.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /zones/1 or /zones/1.json
+  def update
+    respond_to do |format|
+      if @zone.update(zone_params)
+        format.html { redirect_to zone_url(@zone), notice: "Area se ha actualizado correctamente" }
+        format.json { render :show, status: :ok, location: @zone }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @zone.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /zones/1 or /zones/1.json
+  def destroy
+    @zone.destroy
+
+    respond_to do |format|
+      format.html { redirect_to zones_url, notice: "La area se ha eliminado" }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_zone
+      @zone = Zone.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def zone_params
+      params.require(:zone).permit(:nombre, :departament_id)
+    end
+end

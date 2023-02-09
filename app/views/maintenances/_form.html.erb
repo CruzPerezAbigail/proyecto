@@ -1,0 +1,109 @@
+<%= form_with(model: maintenance) do |f| %>
+  <% if maintenance.errors.any? %>
+    <div style="color: red">
+      
+      <ul>
+        <% maintenance.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <br>
+                     <div class="form-group row">
+                           <%= f.label :Fecha_de_inicio, class:'col-sm-2'%>
+                           <div class="form-group col-sm-4">
+                           <%= f.datetime_local_field :fecha_inicio , class:'form-control'%>
+                           </div>
+                    </div> 
+
+                    <div class="form-group row">
+                           <%= f.label :Fecha_de_termino , class:'col-sm-2'%>
+                           <div class="form-group col-sm-4">
+                           <%= f.datetime_local_field :fecha_fin , class:'form-control'%>
+                           </div>
+                    </div> 
+
+                    <div class="form-group row">
+                              <%= f.label :Observaciones , class:'col-sm-2'%>
+                              <div class="form-group col-sm-4">
+                              <%= f.text_area :observaciones, size: "80x20", class:'form-control'%>
+                              </div>
+                    </div>
+
+                    <div class="form-group row">
+                         <%= f.label :Tipo_de_mantenimiento , class:'col-sm-2'%>
+                         <div class="form-group col-sm-4">
+                         <div class="placeholder">
+                          <%= f.select :tipo_mantenimiento , ["Preventivo",  "Correctivo"], prompt: "Seleccione el tipo de mantenimiento" %>
+                          </div>
+                    </div> 
+                  <br>
+                  <div class="form-group row ">
+                       <%= f.label :equipment_id,"Serie del equipo" , class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <%= f.text_field :equipment_id , class:'form-control'%>
+                       </div>
+                       </div>
+
+                    <div class="form-group row">
+                       <%= f.label :zone_id, "Area" , class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <div class="placeholder">
+                       <%= f.collection_select( :zone_id, Zone.all{|d| [d.nombre, d.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione el departamento")%>
+                        </div>
+                       </div>
+                            </div>
+
+                     <div class="form-group row">
+                       <%= f.label :physical_id, "Materiales" , class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <div class="placeholder">
+                       <%= f.collection_select( :physical_id, Physical.all{|m| [m.nombre, m.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione el material")%>
+                        </div>
+                       </div>
+                            </div>
+
+                           <div class="form-group row">
+                       <%= f.label :tool_id, "Herramienta" , class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <div class="placeholder">
+                       <%= f.collection_select( :tool_id, Tool.all{|h| [h.nombre, h.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione la herramienta")%>
+                        </div>
+                       </div>
+                            </div>
+              
+
+                        
+                            <div class="form-group row">
+                       <%= f.label :resources_id, "Insumo" , class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <div class="placeholder">
+                       <%= f.collection_select(:resources_id, Resource.all{|i| [i.nombre, i.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione el insumo")%>
+                        </div>
+                       </div>
+                            </div>
+
+                   <div class="form-group row">
+                       <%= f.label :usuarios_id, "Usuario" , class:'col-sm-2'%>
+                       <div class="col-sm-4">
+                       <div class="placeholder">
+                       <%= f.collection_select( :usuarios_id, Usuario.all{|u| [u.nombre, u.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione su usuario")%>
+                        </div>
+                       </div>
+                            </div>
+                            
+                         <%end %>
+
+                            <br/>
+                         <div>
+                 <button type="submit" class="btn btn-info">Guardar</button>
+                 <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+           
+                                 
+                                  
+                          </div>
+                          
+</form>
+

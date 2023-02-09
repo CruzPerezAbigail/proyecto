@@ -1,0 +1,16 @@
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Herramienta</a></li>
+          <li class="breadcrumb-item active">Editar el  herramienta</li>
+        </ol>
+                  <h4 class="text">Herramienta<%= @tool.id%> </h4>
+
+
+
+<%= render "form", tool: @tool %>
+
+<br>
+
+<div>
+  <%= link_to "Ver herramienta", @tool %> |
+  <%= link_to "Regresar a herramientas", tools_path %>
+</div>

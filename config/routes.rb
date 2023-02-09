@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  resources :maintenances
+  resources :equipment
+  resources :equipos
+  resources :resources
+  resources :tools
+  resources :physicals
+  resources :shapes
+  resources :licences
+  resources :brands
+  resources :departaments
+  resources :zones
   resources :reportes
   resources :solicituds
   resources :mantenimientos

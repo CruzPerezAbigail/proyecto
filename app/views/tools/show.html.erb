@@ -1,0 +1,25 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Herramienta</a></li>
+          <li class="breadcrumb-item active">Caracteristicas Herramienta</li>
+        </ol>
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+
+
+<h4 class="text">Caracteristicas Herramienta <%= @tool.id %> </h4>
+</div>
+ <div class="probar">
+<p style="color: green"><%= notice %></p>
+
+<%= render @tool %>
+
+<div>
+  <%= link_to "Editar herramienta", edit_tool_path(@tool) %> |
+  <%= link_to "Regresar", tools_path %>
+
+  <%= button_to "Eliminar herramienta", @tool, method: :delete %>
+</div>

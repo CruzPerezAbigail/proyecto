@@ -1,0 +1,14 @@
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Areas</a></li>
+          <li class="breadcrumb-item active">Editar el  area</li>
+        </ol>
+                  <h4 class="text">Area <%= @zone.id%> </h4>
+
+<%= render "form", zone: @zone %>
+
+<br>
+
+<div>
+  <%= link_to "Show this zone", @zone %> |
+  <%= link_to "Back to zones", zones_path %>
+</div>

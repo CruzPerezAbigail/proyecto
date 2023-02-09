@@ -18,8 +18,8 @@
 <%= render @tool %>
 
 <div>
-  <%= link_to "Editar herramienta", edit_tool_path(@tool) %> |
-  <%= link_to "Regresar", tools_path %>
+  <%= link_to "Editar herramienta", edit_tool_path(@tool),  class: "btn btn-success"%> |
+  <%= link_to "Regresar", tools_path ,  class: "btn btn-success"%>
 
-  <%= button_to "Eliminar herramienta", @tool, method: :delete %>
+  <%= link_to "Eliminar herramienta", @tool, method: :delete, data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger" %>
 </div>

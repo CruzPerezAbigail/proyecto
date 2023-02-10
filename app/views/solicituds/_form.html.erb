@@ -23,10 +23,10 @@
   <% end %>
 
                           <div class="form-group row">
-                           <%= form.label :area_solicitante, "Area solicitante :" , class:'col-sm-2'%>
+                           <%= form.label :zone_id, "Area solicitante :" , class:'col-sm-2'%>
                            <div class="col-sm-4">
                            <div class="placeholder">
-                           <%= form.collection_select(:area_solicitante, Area.all{|a| [a.nombre]}, :id, :nombre, class:'form-control', prompt: "Seleccione el área")%>
+                           <%= form.collection_select(:zone_id, Area.all{|a| [a.nombre]}, :id, :nombre, class:'form-control', prompt: "Seleccione el área")%>
                            </div>
                            </div>
                            </div>
@@ -46,10 +46,10 @@
   </div>
 <br>
    <div class="form-group row">
-                       <%= form.label :rfc, "Usuario" , class:'col-sm-2'%>
+                       <%= form.label :usuarios_id , "Usuario" , class:'col-sm-2'%>
                        <div class="col-sm-4">
                        <div class="placeholder">
-                       <%= form.collection_select( :rfc, Usuario.all{|u| [u.nombre, u.rfc]}, :rfc, :nombre, class:'form-control', prompt:"Seleccione su usuario")%>
+                       <%= form.collection_select(:usuarios_id, Usuario.all{|u| [u.nombre, u.rfc]}, :id, :nombre, class:'form-control', prompt:"Seleccione su usuario")%>
                         </div>
                        </div>
                             </div>

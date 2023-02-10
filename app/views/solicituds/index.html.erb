@@ -33,11 +33,11 @@
 <tr>
 
 
-<td><%= solicituds.id_solicitud %> </td>
-<td><%= solicituds.area_solicitante %> </td>
+<td><%= solicituds.id %> </td>
+<td><%= solicituds.zone.nombre %> </td>
 <td><%= solicituds.fecha %> </td>
 <td><%= solicituds.descripcion %> </td>
-<td><%= solicituds.rfc %> </td>
+<td><%= solicituds.usuarios_id %> </td>
 <td>
       <a href="<%= edit_solicitud_path(solicituds)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
       <a  class="mostrar"  <%= link_to ({:action => :show, :id => solicituds.id}) do %><i class="bi bi-eye-fill"></i><%end%></a> 

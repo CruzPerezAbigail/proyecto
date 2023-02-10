@@ -4,6 +4,7 @@ class Zone < ApplicationRecord
          belongs_to :departament, autosave: true
          has_one :equipment
          has_one :maintenance
+         has_one :solicitud
          
 
 end

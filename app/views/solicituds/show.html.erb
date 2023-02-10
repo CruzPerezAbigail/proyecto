@@ -1,22 +1,51 @@
 <head>
 <%= stylesheet_link_tag "style" %>
 </head>
-<ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="">Solicitud</a></li>
-          <li class="breadcrumb-item active">Caracteristicas solicitud</li>
-        </ol>
 <div class="container">
 <div class="card mt-5">
 <div class="card-header">
 
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Solicitud</a></li>
+          <li class="breadcrumb-item active">Caracteristicas solicitud</li>
+        </ol>
 
-<h4 class="text">Caracteristicas solicitud <%= @solicitud.id_solicitud %> </h4>
+
+<h4 class="text">Caracteristicas solicitud <%= @solicitud.id%> </h4>
 </div>
  <div class="probar">
 
 <p style="color: green"><%= notice %></p>
+ <div class="form-group row ">
 
-<%= render @solicitud %>
+            <div class="form-group row">
+            <%= label :zone_id, 'Area solicitante', class: 'col-sm-2'%>
+            <div class="col-sm-4">
+            <%= @solicitud.zone.nombre%>
+            </div>
+            </div>
+
+            <div class="form-group row">
+            <%= label :fecha, 'Fecha final', class: 'col-sm-2'%>
+            <div class="col-sm-4">
+            <%= @solicitud.fecha%>
+            </div>
+            </div>
+
+            <div class="form-group row">
+            <%= label :descripcion, 'Observaciones', class: 'col-sm-2'%>
+            <div class="col-sm-4">
+            <%= @solicitud.descripcion%>
+            </div>
+            </div>
+
+            <div class="form-group row">
+            <%= label :usuarios_id, 'Tipo mantenimiento', class: 'col-sm-2'%>
+            <div class="col-sm-4">
+            <%= @solicitud.usuarios_id%>
+            </div>
+            </div>
+      
 
 <div>
   <%= link_to "Editar solicitud", edit_solicitud_path(@solicitud) %> |

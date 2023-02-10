@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_09_175025) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_10_164204) do
   create_table "areas", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
@@ -177,14 +177,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_175025) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reportes", primary_key: "id_reporte", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "reportes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "fecha"
     t.text "observaciones"
     t.string "tipo_problema"
-    t.integer "id_mantenimiento"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id_mantenimiento"], name: "id_mantenimiento_idx"
+    t.bigint "maintenances_id", null: false
+    t.index ["maintenances_id"], name: "index_reportes_on_maintenances_id"
   end
 
   create_table "resources", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -202,14 +202,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_175025) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "solicituds", primary_key: "id_solicitud", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "area_solicitante"
+  create_table "solicituds", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "fecha"
     t.text "descripcion"
-    t.string "rfc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["rfc"], name: "fk_rails_f24fa999e5"
+    t.string "usuarios_id", null: false
+    t.bigint "zone_id", null: false
+    t.index ["usuarios_id"], name: "index_solicituds_on_usuarios_id"
+    t.index ["zone_id"], name: "index_solicituds_on_zone_id"
   end
 
   create_table "tipos", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -273,7 +274,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_175025) do
   add_foreign_key "mantenimientos", "insumos", column: "id_insumo", primary_key: "id_insumo"
   add_foreign_key "mantenimientos", "materiales", column: "id_materiales", primary_key: "id_material"
   add_foreign_key "mantenimientos", "usuarios", column: "rfc"
-  add_foreign_key "reportes", "mantenimientos", column: "id_mantenimiento", primary_key: "id_mantenimiento", name: "id_mantenimiento"
-  add_foreign_key "solicituds", "usuarios", column: "rfc"
+  add_foreign_key "reportes", "maintenances", column: "maintenances_id"
+  add_foreign_key "solicituds", "usuarios", column: "usuarios_id"
+  add_foreign_key "solicituds", "zones"
   add_foreign_key "zones", "departaments"
 end

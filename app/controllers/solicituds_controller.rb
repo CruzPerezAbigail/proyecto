@@ -66,6 +66,6 @@ class SolicitudsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def solicitud_params
-      params.require(:solicitud).permit(:area_solicitante, :fecha, :descripcion, :rfc)
+      params.require(:solicitud).permit(:zone_id, :fecha, :descripcion, :usuarios_id)
     end
 end

@@ -1,3 +1,4 @@
 class Solicitud < ApplicationRecord
-       validates :area_solicitante, :fecha, :descripcion , :rfc , :presence => true
+       validates :zone_id, :fecha, :descripcion , :usuarios_id , :presence => true
+       belongs_to :zone
 end

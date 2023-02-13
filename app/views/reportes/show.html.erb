@@ -5,15 +5,19 @@
 <div class="container">
 <div class="card mt-5">
 <div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Reporte</a></li>
+          <li class="breadcrumb-item active">Caracteristicas reporte</li>
+        </ol>
+                  <h4 class="text">Reporte  <%= @reporte.id%> </h4>
 
-<h4 class="text">Reporte</h4>
 </div>
  <div class="probar">
 <%= render @reporte %>
 
 <div>
-  <%= link_to "Editar reporte", edit_reporte_path(@reporte) %> |
-  <%= link_to "Regresar reportes", reportes_path %>
+  <%= link_to "Editar reporte", edit_reporte_path(@reporte),  class: "btn btn-success" %> |
+  <%= link_to "Regresar reportes", reportes_path,  class: "btn btn-success" %>
 
-  <%= button_to "Eliminar reporte", @reporte, method: :delete %>
+  <%= link_to "Eliminar reporte", @reporte, method: :delete, data: { confirm: "Esta seguro de eliminar"}, class: "btn btn-danger" %>
 </div>

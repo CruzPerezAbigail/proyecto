@@ -33,11 +33,11 @@
 <% @reportes.each do |reportes| %>
 
 <tr>
-      <td><%= reportes.id_reporte %></td>
+      <td><%= reportes.id %></td>
       <td><%= reportes.fecha %></td>
       <td><%= reportes.observaciones %></td>
       <td><%= reportes.tipo_problema %></td>
-      <td><%= reportes.id_mantenimiento %></td>
+      <td><%= reportes.maintenances_id %></td>
       <td>
         <a href="<%= edit_reporte_path(reportes)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
         <a  class="mostrar"  <%= link_to ({:action => :show, :id => reportes.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>

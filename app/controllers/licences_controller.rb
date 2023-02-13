@@ -25,7 +25,7 @@ class LicencesController < ApplicationController
 
     respond_to do |format|
       if @licence.save
-        format.html { redirect_to licence_url(@licence), notice: "Licence was successfully created." }
+        format.html { redirect_to licence_url(@licence), notice: "La licencia fue creada con exito." }
         format.json { render :show, status: :created, location: @licence }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class LicencesController < ApplicationController
   def update
     respond_to do |format|
       if @licence.update(licence_params)
-        format.html { redirect_to licence_url(@licence), notice: "Licence was successfully updated." }
+        format.html { redirect_to licence_url(@licence), notice: "La licencia se actualizo con exito." }
         format.json { render :show, status: :ok, location: @licence }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class LicencesController < ApplicationController
     @licence.destroy
 
     respond_to do |format|
-      format.html { redirect_to licences_url, notice: "Licence was successfully destroyed." }
+      format.html { redirect_to licences_url, notice: "La licencia se ha eliminado correctamente." }
       format.json { head :no_content }
     end
   end

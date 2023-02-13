@@ -2,13 +2,9 @@
 <%= stylesheet_link_tag "style" %>
 </head>
 
-<div class="container">
-<div class="card mt-5">
-<div class="card-header">
 
-<h4 class="text">Marca </h4>
-</div>
- <div class="probar">
+
+
 <%= form_with(model: brand) do |form| %>
   <% if brand.errors.any? %>
     <div style="color: red">

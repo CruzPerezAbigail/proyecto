@@ -5,8 +5,8 @@ class Usuario < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
  
-    validates :rfc, format: { with: /[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})/, message: "Formato no compatible" }
-    validates :rfc, :uniqueness => true 
+    validates :id, format: { with: /[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})/, message: "Formato no compatible" }
+    validates :id, :uniqueness => true 
 
     
 

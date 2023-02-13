@@ -11,25 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_02_10_164204) do
-  create_table "areas", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "departamentos", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.integer "num_equipo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "areas_id", null: false
-    t.index ["areas_id"], name: "index_departamentos_on_areas_id"
   end
 
   create_table "departaments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -59,57 +44,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_164204) do
     t.index ["zone_id"], name: "index_equipment_on_zone_id"
   end
 
-  create_table "equipo12s", primary_key: "serie", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "tipo"
-    t.string "modelo"
-    t.string "serial"
-    t.string "observaciones"
-    t.string "ram"
-    t.string "disco_duro"
-    t.integer "id_tipo"
-    t.integer "id_marcas"
-    t.integer "id_departamentos"
-    t.integer "id_areas"
-    t.string "id_licencias"
-    t.string "estatus"
-    t.date "fecharegistro"
-    t.index ["id_areas"], name: "fk_rails_e1d6ec70cc"
-    t.index ["id_departamentos"], name: "fk_rails_d14d8d8728"
-    t.index ["id_licencias"], name: "fk_rails_db6fd01638"
-    t.index ["id_marcas"], name: "fk_rails_447672c699"
-    t.index ["id_tipo"], name: "fk_rails_ab1eaec3c4"
-    t.index ["serie"], name: "serie_UNIQUE", unique: true
-  end
-
-  create_table "herramienta", primary_key: "id_herramienta", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.string "caracteristicas"
-    t.integer "existencia"
-    t.string "estatus"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "insumos", primary_key: "id_insumo", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.string "caracteristicas"
-    t.integer "existencia"
-    t.string "estatus"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "licences", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.date "anio"
-    t.string "num_licencia"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "licencia", primary_key: "id_licencia", id: { type: :string, limit: 20 }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.integer "anio"
     t.string "num_licencia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -132,41 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_164204) do
     t.index ["tool_id"], name: "index_maintenances_on_tool_id"
     t.index ["usuarios_id"], name: "index_maintenances_on_usuarios_id"
     t.index ["zone_id"], name: "index_maintenances_on_zone_id"
-  end
-
-  create_table "mantenimientos", primary_key: "id_mantenimiento", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.datetime "fecha_inicio"
-    t.datetime "fecha_fin"
-    t.text "observaciones"
-    t.string "tipo_mantenimiento"
-    t.string "serie"
-    t.integer "id_departamento"
-    t.string "rfc"
-    t.integer "id_materiales"
-    t.integer "id_herramienta"
-    t.integer "id_insumo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["id_departamento"], name: "fk_rails_0fa01aa708"
-    t.index ["id_herramienta"], name: "fk_rails_9f760d3b22"
-    t.index ["id_insumo"], name: "fk_rails_11f2e81ae5"
-    t.index ["id_materiales"], name: "fk_rails_86ffc5a6a9"
-    t.index ["rfc"], name: "fk_rails_14944d4f12"
-    t.index ["serie"], name: "fk_rails_2582c470a0"
-  end
-
-  create_table "marcas", primary_key: "id_marca", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "materiales", primary_key: "id_material", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.string "caracteristicas"
-    t.integer "existencia"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "physicals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -213,12 +115,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_164204) do
     t.index ["zone_id"], name: "index_solicituds_on_zone_id"
   end
 
-  create_table "tipos", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tools", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "caracteristicas"
@@ -258,22 +154,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_164204) do
   add_foreign_key "equipment", "licences"
   add_foreign_key "equipment", "shapes"
   add_foreign_key "equipment", "zones"
-  add_foreign_key "equipo12s", "areas", column: "id_areas"
-  add_foreign_key "equipo12s", "departamentos", column: "id_departamentos"
-  add_foreign_key "equipo12s", "licencia", column: "id_licencias", primary_key: "id_licencia"
-  add_foreign_key "equipo12s", "marcas", column: "id_marcas", primary_key: "id_marca"
-  add_foreign_key "equipo12s", "tipos", column: "id_tipo"
   add_foreign_key "maintenances", "equipment"
   add_foreign_key "maintenances", "physicals"
   add_foreign_key "maintenances", "resources", column: "resources_id"
   add_foreign_key "maintenances", "tools"
   add_foreign_key "maintenances", "usuarios", column: "usuarios_id"
   add_foreign_key "maintenances", "zones"
-  add_foreign_key "mantenimientos", "equipo12s", column: "serie", primary_key: "serie"
-  add_foreign_key "mantenimientos", "herramienta", column: "id_herramienta", primary_key: "id_herramienta"
-  add_foreign_key "mantenimientos", "insumos", column: "id_insumo", primary_key: "id_insumo"
-  add_foreign_key "mantenimientos", "materiales", column: "id_materiales", primary_key: "id_material"
-  add_foreign_key "mantenimientos", "usuarios", column: "rfc"
   add_foreign_key "reportes", "maintenances", column: "maintenances_id"
   add_foreign_key "solicituds", "usuarios", column: "usuarios_id"
   add_foreign_key "solicituds", "zones"

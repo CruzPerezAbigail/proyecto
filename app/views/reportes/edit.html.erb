@@ -1,5 +1,18 @@
-<h1>Editar reporte</h1>
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
 
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Reporte</a></li>
+          <li class="breadcrumb-item active">Editar reporte</li>
+        </ol>
+                  <h4 class="text">Reporte  <%= @reporte.id%> </h4>
+</div>
+ <div class="probar">
+<p style="color: green"><%= notice %></p>
 <%= render "form", reporte: @reporte %>
 
 <br>

@@ -73,6 +73,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def reporte_params
-      params.require(:reporte).permit(:fecha, :observaciones, :tipo_problema, :id_mantenimiento)
+      params.require(:reporte).permit(:fecha, :observaciones, :tipo_problema, :maintenances_id)
     end
 end

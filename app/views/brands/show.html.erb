@@ -20,5 +20,7 @@
 <div>
   <%= link_to "Editar marca", edit_brand_path(@brand),  class: "btn btn-success" %>  |
   <%= link_to "Regresar", brands_path,  class: "btn btn-success" %>|
+   <%  if can? :destroy, @brand%>
   <%= link_to "Eliminar la marca", @brand, method: :delete, data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger" %>
+  <%end%>
 </div>

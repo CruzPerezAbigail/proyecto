@@ -33,7 +33,7 @@
 </thead>
 <% @usuarios.each do |usuarios| %>
   <tr>
-    <td><%= usuarios.rfc %></td>
+    <td><%= usuarios.id %></td>
     <td><%= usuarios.nombre %></td>
     <td><%= usuarios.apellidouno %></td>
     <td><%= usuarios.apellidodos %></td>
@@ -45,10 +45,10 @@
                   <a href="<%= edit_usuario_path(usuarios)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
                   <%end%>
                   <% if can? :show, @usuarios%>
-                  <a  class="mostrar"  <%= link_to ({:action => :show, :id => usuarios.rfc}) do %><i class="bi bi-eye-fill"></i><%end%></a>  
+                  <a  class="mostrar"  <%= link_to ({:action => :show, :id => usuarios.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>  
                   <%end%>
                   <%  if can? :destroy, @usuarios%>
-                   <a class="eliminar" <%= link_to ({ :action => :destroy, :id => usuarios.rfc })do%>
+                   <a class="eliminar" <%= link_to ({ :action => :destroy, :id => usuarios.id })do%>
                   <i class="bi bi-trash"></i>
                   <%end%>
                   <% end %>

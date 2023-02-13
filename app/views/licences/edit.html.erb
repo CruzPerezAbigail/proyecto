@@ -1,14 +1,18 @@
+<head>
+<%= stylesheet_link_tag "style" %>
+</head>
 
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
 <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="">Licencias</a></li>
           <li class="breadcrumb-item active">Editar licencia</li>
         </ol>
                   <h4 class="text">Area <%= @licence.id%> </h4>
+</div>
+ <div class="probar">
 <%= render "form", licence: @licence %>
 
 <br>
 
-<div>
-  <%= link_to "Ver licencia ", @licence %> |
-  <%= link_to "Regresar a licencias", licences_path %>
-</div>

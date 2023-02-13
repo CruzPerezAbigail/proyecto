@@ -40,7 +40,7 @@
                        <%= f.label :departament_id, "Departamento" , class:'col-sm-2'%>
                        <div class="col-sm-4">
                        <div class="placeholder">
-                       <%= f.collection_select( :departament_id, Departamento.all{|d| [d.nombre, d.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione el departamento")%>
+                       <%= f.collection_select( :departament_id, Departament.all{|d| [d.nombre, d.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione el departamento")%>
                         </div>
                        </div>
                             </div>

@@ -1,43 +1,58 @@
 
 
-<div class="container">     
-                  <h4 class="text text-secondary">Equipo </h4>
+<div class="container">     <head>
+<%= stylesheet_link_tag "style" %>
+</head>
+<p style="color: green"><%= notice %></p>
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Usuario</a></li>
+          <li class="breadcrumb-item active">Caracteristicas del usuario</li>
+        </ol>
+                  <h4 class="text">Usuario  <%= @usuario.id%> </h4>
+
+</div>
+ <div class="probar">
+
+                  
 
        
 
                       <div class="form-group row">
-                          <%= label :rfc ,'RFC:', class:'col-sm-2' %>
+                          <%= label :id ,'Registro Federal de Contribuyentes:', class:'col-sm-4' %>
                           
                           <div class="col-sm-4">
-                          <%= @usuarios.rfc %>
+                          <%= @usuarios.id %>
                           </div>
                       </div>
 
                       
 
                            <div class="form-group row ">
-                           <%= label :nombre ,'Nombre:', class:'col-sm-2'%>
+                           <%= label :nombre ,'Nombre:', class:'col-sm-4'%>
                            <div class="col-sm-4">
                            <%= @usuarios.nombre%>
                            </div>
                   </div>
 
                            <div class="form-group row">
-                           <%= label :primerapellido ,'Primer apellido', class:'col-sm-2'%>
+                           <%= label :primerapellido ,'Primer apellido', class:'col-sm-4'%>
                            <div class="col-sm-4">
                            <%= @usuarios.apellidouno%>
                            </div>
                            </div>
 
                            <div class="form-group row">
-                           <%= label :segundoapellido ,'Segundo apellido', class:'col-sm-2'%>
+                           <%= label :segundoapellido ,'Segundo apellido', class:'col-sm-4'%>
                            <div class="col-sm-4">
                            <%= @usuarios.apellidodos%>
                            </div>
                        </div>
 
                        <div class="form-group row">
-                           <%= label :Role ,'Role', class:'col-sm-2'%>
+                           <%= label :Role ,'Role', class:'col-sm-4'%>
                            <div class="col-sm-4">
                            <%= @usuarios.role%>
                            </div>
@@ -45,7 +60,7 @@
 
 
                        <div class="form-group row">
-                       <%= label :Email ,'Correo', class:'col-sm-2'%>
+                       <%= label :Email ,'Correo', class:'col-sm-4'%>
                        <div class="col-sm-4">
                        <%= @usuarios.email %>
                            
@@ -58,10 +73,12 @@
                              <br>
                              <br>
            
-                             
-                              <%= link_to 'Regresar', url_for(:back), class: "btn btn-warning" %>
-                             <%= button_to 'Eliminar', { :action => :destroy, :id => @usuarios.rfc}, :method => :delete, :data => { :confirm => 'Esta seguro?' } %>
-    
+                              <div> 
+
+                                  <%= link_to "Lista",usuarios_path,  class: "btn btn-success"%>           
+                            <%= link_to 'Regresar', url_for(:back),  class: "btn btn-success"%>
+                             <%= link_to 'Eliminar', { :action => :destroy, :id => @usuarios.id}, :method => :delete, :data => { :confirm => 'Esta seguro?' } ,  class: "btn btn-danger"%>
+                                </div>
                                   <br>
                                   <br>
                              

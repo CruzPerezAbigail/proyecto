@@ -2,12 +2,7 @@
 <%= stylesheet_link_tag "style" %>
 </head>
 
-<div class="container">
-<div class="card mt-5">
-<div class="card-header">
 
-<h4 class="text">Nuevo Reporte </h4>
-</div>
  <div class="probar">
  <%= form_with(model: reporte) do |form| %>
   <% if reporte.errors.any? %>
@@ -45,9 +40,9 @@
   </div>
 
    <div class="form-group row">
-    <%= form.label :id_mantenimiento,  class:'col-sm-2'  %>
+    <%= form.label :maintenances_id,  class:'col-sm-2'  %>
     <div class="col-sm-4">
-    <%= form.text_field :id_mantenimiento%>
+    <%= form.collection_select(:maintenances_id, Maintenance.all{ :equipment_id}, :id, :equipment_id, class:'form-control', prompt:"Seleccione su mantenimiento")%>
   </div>
   </div>
 

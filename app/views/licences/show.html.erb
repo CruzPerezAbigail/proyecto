@@ -20,6 +20,7 @@
 <div>
   <%= link_to "Editar licencia", edit_licence_path(@licence),  class: "btn btn-success" %>|
   <%= link_to "Lista", licences_path,  class: "btn btn-success" %> |
-
+ <%  if can? :destroy, @licence%>
   <%= link_to "Eliminar licencia", @licence, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger" %>
+  <%end%>
 </div>

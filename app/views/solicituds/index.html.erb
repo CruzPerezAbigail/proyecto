@@ -39,12 +39,18 @@
 <td><%= solicituds.descripcion %> </td>
 <td><%= solicituds.usuarios_id %> </td>
 <td>
+<%if can? :edit, Solicitud%>
       <a href="<%= edit_solicitud_path(solicituds)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
+      <%end%>
+      <%if can? :show, Solicitud%>
       <a  class="mostrar"  <%= link_to ({:action => :show, :id => solicituds.id}) do %><i class="bi bi-eye-fill"></i><%end%></a> 
+      <%end%>
+        <%if can? :destroy, Solicitud%>
        <a class="eliminar" <%= link_to ({ :action => :destroy, :id => solicituds.id })do%>
                       <i class="bi bi-trash"></i>
                       <%end%>
                       </a>
+                      <%end%>
 </td>
 </tr>
 </div> 

@@ -37,6 +37,8 @@
               </thead>
 
               <tbody>
+
+              
               <% @maintenances.each do |maintenance| %>
               <tr>
               <td><%= maintenance.id %></td>
@@ -51,14 +53,21 @@
               <td><%= maintenance.resources_id %></td>
               <td><%= maintenance.usuarios_id %></td>
               <td>
+             
+
+             <% if can? :edit, Maintenance%>
               <a href="<%= edit_maintenance_path(maintenance)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
+              <%end%>
+              <% if can? :show, Maintenance%>
                <a  class="mostrar"  <%= link_to ({:action => :show, :id => maintenance.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>
-               
+               <%end %>
+               <% if can? :destroy, Maintenance%>
                <a class="eliminar" <%= link_to ({ :action => :destroy, :id => maintenance.id})do%>
                   <i class="bi bi-trash"></i>
                   <%end%>
                   
                   </a>
+                  <%end%>
               </td>
               </tr>
               <%end%>

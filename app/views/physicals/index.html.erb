@@ -44,15 +44,19 @@
     <td><%= physical.existencia %></td> 
      
     <td>
-    
+    <% if can? :edit, Physical%>
     <a href="<%= edit_physical_path(physical)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
+    <%end%>
+    <% if can? :show, Physical%>
        <a  class="mostrar"  <%= link_to ({:action => :show, :id => physical.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>
+       <%end%>
+       <% if can? :destroy, Physical%>
      <a class="eliminar" <%= link_to ({ :action => :destroy, :id => physical.id })do%>
     <i class="bi bi-trash"></i>
     <% end %>
     </a>
    
-   
+   <%end%>
     </tr>
     <p>
       

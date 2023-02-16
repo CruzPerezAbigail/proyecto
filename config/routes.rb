@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :maintenances
   resources :equipment
-  resources :equipos
   resources :resources
   resources :tools
   resources :physicals
@@ -12,14 +11,7 @@ Rails.application.routes.draw do
   resources :zones
   resources :reportes
   resources :solicituds
-  resources :mantenimientos
-  resources :insumos
-  resources :herramienta
-  resources :materiales
-  
-  resources :equipo12
-  resources :areas
-  resources :marcas
+ 
   devise_for :usuarios, controllers: {
     usuarios: :sessions
   }

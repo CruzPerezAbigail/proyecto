@@ -4,11 +4,14 @@ class EquipmentController < ApplicationController
 
   # GET /equipment or /equipment.json
   def index
-    @equipment = Equipment.all
+   @equipment = Equipment.all
+  # @equipment= Equipment.get_mantenimientos  
   end
 
   # GET /equipment/1 or /equipment/1.json
   def show
+    @equipment = Equipment.find(params[:id])
+   # @equipment= Equipment.servicios 
   end
 
   # GET /equipment/new
@@ -26,7 +29,7 @@ class EquipmentController < ApplicationController
 
     respond_to do |format|
       if @equipment.save
-        format.html { redirect_to equipment_url(@equipment), notice: "Equipment was successfully created." }
+        format.html { redirect_to equipment_url(@equipment), notice: "El equipo de ha creado correctamente." }
         format.json { render :show, status: :created, location: @equipment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +42,7 @@ class EquipmentController < ApplicationController
   def update
     respond_to do |format|
       if @equipment.update(equipment_params)
-        format.html { redirect_to equipment_url(@equipment), notice: "Equipment was successfully updated." }
+        format.html { redirect_to equipment_url(@equipment), notice: "El equipo de ha actualizado correctamente." }
         format.json { render :show, status: :ok, location: @equipment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +56,7 @@ class EquipmentController < ApplicationController
     @equipment.destroy
 
     respond_to do |format|
-      format.html { redirect_to equipment_index_url, notice: "Equipment was successfully destroyed." }
+      format.html { redirect_to equipment_index_url, notice: "EEl equipo de ha eliminado correctamente." }
       format.json { head :no_content }
     end
   end

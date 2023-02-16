@@ -39,13 +39,18 @@
                     <td><%= brand.id %></td>
                     <td><%= brand.nombre %></td>
                   <td > 
-                  
+                  <% if can? :edit, Brand%>
                   <a href="<%= edit_brand_path(brand)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
+                  <%end%>
+                  <% if can? :show, Brand%>
                   <a  class="mostrar"  <%= link_to ({:action => :show, :id => brand.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>
+                  <%end%>
+                  <% if can? :destroy, Brand%>
                    <a class="eliminar" <%= link_to ({ :action => :destroy, :id => brand.id })do%>
                   <i class="bi bi-trash"></i>
                   <% end %>
                   </a>
+                  <%end%>
                     </td>
                   </tr>
             </div>

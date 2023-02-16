@@ -56,13 +56,13 @@
                  
                   
                   <td > 
-                 <% if can? :edit, @equipment%>
+                 <% if can? :edit, Equipment%>
                   <a href="<%= edit_equipment_path(equipment)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
                   <%end%>
-                  <% if can? :show, @equipment%>
+                  <% if can? :show, Equipment%>
                   <a  class="mostrar"  <%= link_to ({:action => :show, :id => equipment.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>  
                   <%end%>
-                  <%  if can? :destroy, @equipment%>
+                  <%  if can? :destroy, Equipment%>
                    <a class="eliminar" <%= link_to ({ :action => :destroy, :id => equipment.id })do%>
                   <i class="bi bi-trash"></i>
                   <%end%>

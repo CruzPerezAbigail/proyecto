@@ -17,16 +17,17 @@ class Ability
               
             elsif usuario.role == "Agente"
               alias_action :create, :read, :update, :to => :cru
+
                      can :cru, Reporte
                      can :cru, Resource
                      can :cru, Shape
                      can :cru, Tool
                      can :cru, Zone
                      can :cru, Departament
-                     can :cru, Equipment  
-                     
-
-       
+                     can :cru, Equipment 
+                     can :cru, Brand
+                     can :cru, Maintenance
+                     can :cru, Physical 
 
               else usuario.role == "Personal"
         

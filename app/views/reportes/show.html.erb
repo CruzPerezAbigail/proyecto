@@ -16,8 +16,11 @@
 <%= render @reporte %>
 
 <div>
-  <%= link_to "Editar reporte", edit_reporte_path(@reporte),  class: "btn btn-success" %> |
+<% if can? :edit, Reporte%>
+  <%= link_to "Editar reporte", edit_reporte_path(@reporte),  class: "btn btn-success" %> <%end%> |
   <%= link_to "Regresar reportes", reportes_path,  class: "btn btn-success" %>
 
+<%if can? :destroy, Reporte%>
   <%= link_to "Eliminar reporte", @reporte, method: :delete, data: { confirm: "Esta seguro de eliminar"}, class: "btn btn-danger" %>
+<%end%>
 </div>

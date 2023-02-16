@@ -34,13 +34,18 @@
 <td><%= shape.id %></td>
 <td><%= shape.nombre %></td> 
 <td>
-
+      <%if can? :edit, Shape%>
       <a href="<%= edit_shape_path(shape)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
+      <%end%>
+      <%if can? :show, Resource%>
        <a  class="mostrar"  <%= link_to ({:action => :show, :id => shape.id}) do %><i class="bi bi-eye-fill"></i><%end%></a> 
+       <%end%>
+       <%if can? :destroy, Resource%>
       <a class="eliminar" <%= link_to ({ :action => :destroy, :id => shape.id })do%>
       <i class="bi bi-trash"></i>
       <% end %>
       </a>
+      <%end%>
 </td>
 </tr>
 <% end %>

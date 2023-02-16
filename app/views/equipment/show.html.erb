@@ -90,24 +90,51 @@
                               <%= @equipment.disco_duro%>
                               </div>
                           </div>
-                          
-                             <br>
-                             <br>
-           
-                             <div>
+                          </div>
+                        </div>
+                  <table class="table table-bordered" id="tablaman">
+                  <thead class="thead-blue" >
+              <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Fecha inicio</th>
+              <th scope="col">Fecha fin </th>
+              <th scope="col">Observaciones</th>
+              <th scope="col">Tipo de manteniminto</th>
+              <th scope="col">Usuario</th>
+              
+              </tr>
+              </thead>
+
+              <tbody>
+                <% @equipment.maintenance.each do |maintenance|%>
+                <tr>
+                  <td> <%= maintenance.id%>    </td>
+                  <td> <%= maintenance.fecha_fin%>    </td>
+                  <td> <%= maintenance.fecha_inicio%>    </td>
+                  <td> <%= maintenance.observaciones%>    </td>
+                  <td> <%= maintenance.tipo_mantenimiento%>    </td>
+                  <td> <%= maintenance.usuarios_id%>    </td>
+                  
+                  <ul>
+                  
+                  </ul>
+                </tr>
+                <%end%>
+                </tbody>
+              
+</div>
+
+
+                            <div>
                              
                              <%= link_to "Regresar a equipo", equipment_index_path , class: "btn btn-success btn-xs round" %>
                              <% if can? :edit , @equipment%>
                              <%= link_to "Editar  equipo", edit_equipment_path(@equipment), class: "btn btn-success btn-xs round" %> 
                              <%end %>
                              <%if can? :destroy, @equipo12%>
-                             <%= button_to "Eliminar equipo", equipment_path(@equipment), method: :delete, data: { confirm: "Esta seguro de eliminar"}, class: "btn btn-waring btn-xs round" %>
+                             <%= link_to "Eliminar equipo", equipment_path(@equipment), method: :delete, data: { confirm: "Esta seguro de eliminar"}, class: "btn btn-danger" %>
                              <%end%>
                              </div>
-                                  <br>
-                                  <br>
-                             
-                          </div>
-                      </section>
 
 
+                             </section>

@@ -5,5 +5,8 @@ class Maintenance < ApplicationRecord
          has_one :resource
          has_one :usuario
          belongs_to :physical, autosave: true
+
+
+         
 end
 

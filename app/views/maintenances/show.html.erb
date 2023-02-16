@@ -56,7 +56,7 @@
       </div>
 
       <div class="form-group row">
-      <%= label :zone_id, 'Departamento', class: 'col-sm-2'%>
+      <%= label :zone_id, 'Area', class: 'col-sm-2'%>
       <div class="col-sm-4">
       <%= @maintenance.zone.nombre%>
       </div>
@@ -95,8 +95,14 @@
       
 
 <div>
-  <%= link_to "Editar mantenimiento", edit_maintenance_path(@maintenance), class: "btn btn-success btn-xs round" %> |
-  <%= link_to "Regresar ", maintenances_path, class: "btn btn-success btn-xs round" %>
+<% if can? :edit, @maintenance%>
+  <%= link_to "Editar mantenimiento", edit_maintenance_path(@maintenance), class: "btn btn-success btn-xs round" %>  <%end%>  |
 
+  <%= link_to "Regresar ", maintenances_path, class: "btn btn-success btn-xs round" %>
+   <% if can? :destroy, @maintenance%>
   <%= link_to "Eliminar mantenimiento", @maintenance, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger"%>
+  <%end%>
+
 </div>
+
+

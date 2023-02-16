@@ -22,9 +22,10 @@
   </p>
 
 <div>
-  <%= link_to "Editar area", edit_zone_path(@zone),  class: "btn btn-success" %> |
+<% if can? :edit, Zone%>
+  <%= link_to "Editar area", edit_zone_path(@zone),  class: "btn btn-success" %>  <%end%> |
   <%= link_to "Lista", zones_path,  class: "btn btn-success" %>
- <%  if can? :destroy, @equipment%>
+ <%  if can? :destroy, @zone%>
   <%= link_to "Eliminar area", @zone, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger"%>
   <%end%>
 </div>

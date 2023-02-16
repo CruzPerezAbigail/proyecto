@@ -43,15 +43,15 @@
     <td><%= resource.existencia %></td> 
     <td><%= resource.estatus %></td> 
     <td>
-    <%if can? :edit, @resource%>
+    <%if can? :edit, Resource%>
     <a href="<%= edit_resource_path(resource)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
     <%end%>
 
-      <%if can? :show, @resource%>
+      <%if can? :show, Resource%>
       <a  class="mostrar" <%= link_to ({:action => :show, :id => resource.id}) do %><i class="bi bi-eye-fill"></i><%end%></a> 
       <%end%> 
 
-      <%if can? :destroy, @resource%>
+      <%if can? :destroy, Resource%>
       <a class="eliminar" <%= link_to ({ :action => :destroy, :id => resource.id })do%>
       <i class="bi bi-trash"></i>
       <% end %>

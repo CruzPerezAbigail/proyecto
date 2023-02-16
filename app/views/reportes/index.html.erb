@@ -39,13 +39,19 @@
       <td><%= reportes.tipo_problema %></td>
       <td><%= reportes.maintenances_id %></td>
       <td>
+      <% if can? :edit, Reporte%>
         <a href="<%= edit_reporte_path(reportes)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
+        <%end%>
+        <% if can? :show, Reporte%>
         <a  class="mostrar"  <%= link_to ({:action => :show, :id => reportes.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>
+        <%end%>
+
+        <% if can? :destroy, Reporte%>
         <a class="eliminar" <%= link_to ({ :action => :destroy, :id => reportes.id })do%>
                       <i class="bi bi-trash"></i>
                       <%end%>
                       </a>
-             
+             <%end%>
        </td>
 
 </tr>

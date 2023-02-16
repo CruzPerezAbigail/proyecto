@@ -19,8 +19,10 @@
 <%= render @resource %>
 
 <div>
-  <%= link_to "Editar insumo", edit_resource_path(@resource) %> |
-  <%= link_to "Regresar insumos", resources_path %>
-
-  <%= button_to "Eliminar insumo", @resource, method: :delete %>
+<%if can? :edit, Resource%>
+  <%= link_to "Editar insumo", edit_resource_path(@resource), class: "btn btn-success btn-xs round" %> <%end%> |
+  <%= link_to "Regresar insumos", resources_path, class: "btn btn-success btn-xs round" %>
+<%if can? :destroy, Resource%>
+  <%= button_to "Eliminar insumo", @resource, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger"%>
+  <%end%>
 </div>

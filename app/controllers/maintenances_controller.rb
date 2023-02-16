@@ -4,10 +4,12 @@ class MaintenancesController < ApplicationController
   # GET /maintenances or /maintenances.json
   def index
     @maintenances = Maintenance.all
+    
   end
 
   # GET /maintenances/1 or /maintenances/1.json
   def show
+   # @maintenance = Maintenance.get_mantenimientos
   end
 
   # GET /maintenances/new
@@ -25,7 +27,7 @@ class MaintenancesController < ApplicationController
 
     respond_to do |format|
       if @maintenance.save
-        format.html { redirect_to maintenance_url(@maintenance), notice: "Maintenance was successfully created." }
+        format.html { redirect_to maintenance_url(@maintenance), notice: "El mantenimiento se ha creado correctamente." }
         format.json { render :show, status: :created, location: @maintenance }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class MaintenancesController < ApplicationController
   def update
     respond_to do |format|
       if @maintenance.update(maintenance_params)
-        format.html { redirect_to maintenance_url(@maintenance), notice: "Maintenance was successfully updated." }
+        format.html { redirect_to maintenance_url(@maintenance), notice: "El mantenimiento se ha actualizado correctamente." }
         format.json { render :show, status: :ok, location: @maintenance }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +54,7 @@ class MaintenancesController < ApplicationController
     @maintenance.destroy
 
     respond_to do |format|
-      format.html { redirect_to maintenances_url, notice: "Maintenance was successfully destroyed." }
+      format.html { redirect_to maintenances_url, notice: "El mantenimiento se ha eliminado correctamente." }
       format.json { head :no_content }
     end
   end

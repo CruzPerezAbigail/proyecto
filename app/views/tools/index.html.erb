@@ -48,13 +48,18 @@
 <td><%= tools.existencia %></td> 
 <td><%= tools.estatus %></td> 
 <td>
-
+     <%if can? :edit, Tool%>
       <a href="<%= edit_tool_path(tools)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
-       <a  class="mostrar"  <%= link_to ({:action => :show, :id => tools.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>  
+      <%end%>
+      <%if can? :show, Tool%>
+       <a  class="mostrar"  <%= link_to ({:action => :show, :id => tools.id}) do %><i class="bi bi-eye-fill"></i><%end%></a> 
+       <%end%>
+       <%if can? :destroy, Tool%> 
       <a class="eliminar" <%= link_to ({ :action => :destroy, :id => tools.id })do%>
       <i class="bi bi-trash"></i>
       <% end %>
       </a>
+      <%end%>
 </td>
 
 </tr>

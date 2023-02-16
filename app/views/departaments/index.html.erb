@@ -41,7 +41,9 @@
                       <% if can? :edit, Departament%>
                       <a href="<%= edit_departament_path(departamento)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
                       <%end%>
+                      <% if can? :show, Departament%>
                       <a  class="mostrar"  <%= link_to ({:action => :show, :id => departamento.id}) do %><i class="bi bi-eye-fill"></i><%end%></a> 
+                      <%end%>
                       <%if can? :destroy, Departament%> 
                        <a class="eliminar" <%= link_to ({ :action => :destroy, :id => departamento.id })do%>
                       <i class="bi bi-trash"></i>

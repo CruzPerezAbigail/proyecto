@@ -43,7 +43,7 @@
                   <div class="form-group row ">
                        <%= f.label :equipment_id,"Serie del equipo" , class:'col-sm-2'%>
                        <div class="col-sm-4">
-                       <%= f.text_field :equipment_id , class:'form-control'%>
+                       <%= f.collection_select( :equipment_id, Equipment.all , :id, :id,class: 'form-control', prompt: "Seleccione la id del equipo")%>
                        </div>
                        </div>
 

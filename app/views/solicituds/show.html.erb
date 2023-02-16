@@ -48,8 +48,10 @@
       
 
 <div>
-  <%= link_to "Editar solicitud", edit_solicitud_path(@solicitud),  class: "btn btn-success" %> |
+    <%if can? :edit, Solicitud%>
+  <%= link_to "Editar solicitud", edit_solicitud_path(@solicitud),  class: "btn btn-success" %> <%end%> |
   <%= link_to "Regresar solicitud", solicituds_path,  class: "btn btn-success" %>
-
+<%if can? :destroy, Solicitud%>
   <%= link_to "Eliminar solicitud", @solicitud, method: :delete , data: { confirm: "Esta seguro de eliminar"}, class: "btn btn-danger" %>
+  <%end%>
 </div>

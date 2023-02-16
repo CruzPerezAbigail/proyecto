@@ -25,7 +25,7 @@ class PhysicalsController < ApplicationController
 
     respond_to do |format|
       if @physical.save
-        format.html { redirect_to physical_url(@physical), notice: "Physical was successfully created." }
+        format.html { redirect_to physical_url(@physical), notice: "El material se ha creado correctamente." }
         format.json { render :show, status: :created, location: @physical }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class PhysicalsController < ApplicationController
   def update
     respond_to do |format|
       if @physical.update(physical_params)
-        format.html { redirect_to physical_url(@physical), notice: "Physical was successfully updated." }
+        format.html { redirect_to physical_url(@physical), notice: "El material se ha actualizado correctamente." }
         format.json { render :show, status: :ok, location: @physical }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class PhysicalsController < ApplicationController
     @physical.destroy
 
     respond_to do |format|
-      format.html { redirect_to physicals_url, notice: "Physical was successfully destroyed." }
+      format.html { redirect_to physicals_url, notice: "El mantenimiento se ha eliminado correctamente." }
       format.json { head :no_content }
     end
   end

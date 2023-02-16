@@ -15,8 +15,10 @@
 <%= render @physical %>
 
 <div>
-  <%= link_to "Editar material", edit_physical_path(@physical) %> |
-  <%= link_to "Lista", physicals_path %>
-
-  <%= button_to "Eliminar material", @physical, method: :delete %>
+<% if can? :edit, Physical%>
+  <%= link_to "Editar material", edit_physical_path(@physical), class: "btn btn-success btn-xs round" %>  <%end%> |
+  <%= link_to "Lista", physicals_path, class: "btn btn-success btn-xs round" %>
+   <% if can? :destroy, Physical%>
+  <%= link_to "Eliminar material", @physical, method: :delete, data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger" %>
+  <%end%>
 </div>

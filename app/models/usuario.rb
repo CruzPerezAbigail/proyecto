@@ -5,7 +5,7 @@ class Usuario < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
  
-    validates :id, format: { with: /[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})/, message: "Formato no compatible" }
+   # validates :id, format: { with: /[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})/, message: "Formato no compatible" }
     validates :id, :uniqueness => true 
 
     
@@ -25,7 +25,8 @@ class Usuario < ApplicationRecord
     @ability ||= Ability.new(self)
    end 
    
-    belongs_to :maintenance, autosave: true
+    
+    belongs_to :maintenance
       
 end 
 

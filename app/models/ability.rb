@@ -28,6 +28,7 @@ class Ability
                      can :cru, Brand
                      can :cru, Maintenance
                      can :cru, Physical 
+                     can :read, Solicitud
 
               else usuario.role == "Personal"
         

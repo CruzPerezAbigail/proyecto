@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Departament, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do 
+    let(:departament) {FactoryBot.build(:departament)}
+    it "should have a nombre" do 
+      departament.nombre= nil
+      departament.num_equipos= nil
+      expect(departament).to_not be_valid
+    end 
+  end 
 end

@@ -29,7 +29,8 @@ class EquipmentController < ApplicationController
 
     respond_to do |format|
       if @equipment.save
-        format.html { redirect_to equipment_url(@equipment), notice: "El equipo de ha creado correctamente." }
+        
+        format.html { redirect_to equipment_index_url, notice: "El equipo de ha creado correctamente." }
         format.json { render :show, status: :created, location: @equipment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +57,7 @@ class EquipmentController < ApplicationController
     @equipment.destroy
 
     respond_to do |format|
-      format.html { redirect_to equipment_index_url, notice: "EEl equipo de ha eliminado correctamente." }
+      format.html { redirect_to equipment_index_url, notice: "El equipo se ha eliminado correctamente." }
       format.json { head :no_content }
     end
   end

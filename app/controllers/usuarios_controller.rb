@@ -19,7 +19,7 @@ class UsuariosController < ApplicationController
           @usuarios = Usuario.new(usuario_params)
           if @usuarios.save
             flash[:notice] = 'EL USUARIO SE HA GUARDADO EXITOSAMENTE'
-          redirect_to usuarios_path
+             redirect_to usuarios_path
          else 
           flash[:error] = 'No se pudo guardar el usuario'
           render :new
@@ -57,7 +57,7 @@ class UsuariosController < ApplicationController
                   redirect_to(root_url) unless current_user.admin?
                 end
         def usuario_params
-          params.require(:usuario).permit(:id, :nombre, :apellidouno, :apellidodos, :role, :correo, :contraseña, :contraseña)
+          params.require(:usuarios).permit(:id, :nombre, :apellidouno, :apellidodos, :role, :email, :password, :password_confirmation)
         end 
 
 

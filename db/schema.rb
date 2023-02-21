@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_210222) do
     t.string "ram"
     t.string "disco_duro"
     t.date "fecharegistro"
-    t.bigint "departament_id", null: false
+    t.bigint "departament_id"
     t.bigint "zone_id", null: false
     t.bigint "brand_id", null: false
     t.bigint "shape_id", null: false
@@ -59,11 +59,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_210222) do
     t.text "observaciones"
     t.string "tipo_mantenimiento"
     t.bigint "zone_id", null: false
-    t.bigint "physical_id", null: false
-    t.bigint "tool_id", null: false
-    t.bigint "resources_id", null: false
-    t.string "usuarios_id", null: false
-    t.string "equipment_id", null: false
+    t.bigint "physical_id"
+    t.bigint "tool_id"
+    t.bigint "resources_id"
+    t.string "usuarios_id"
+    t.string "equipment_id"
     t.index ["equipment_id"], name: "index_maintenances_on_equipment_id"
     t.index ["physical_id"], name: "index_maintenances_on_physical_id"
     t.index ["resources_id"], name: "index_maintenances_on_resources_id"

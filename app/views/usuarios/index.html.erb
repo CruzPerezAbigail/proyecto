@@ -53,10 +53,14 @@
                   <%end%>
                   <% end %>
                   </a>
+                  
    </td>
   </tr>
 <% end %>
 
+<% if can? :new, @usuario%>
+              <a href="usuarios/new" class="new"><i class="bi bi-plus-circle-fill"></i></a>
+              <%end%>
 
 </div>
 <script>

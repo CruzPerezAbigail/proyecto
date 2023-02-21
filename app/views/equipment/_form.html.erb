@@ -36,6 +36,7 @@
                        </div>
                        </div>
               </div>
+              <% if false %>
                        <div class="form-group row">
                        <%= f.label :departament_id, "Departamento" , class:'col-sm-2'%>
                        <div class="col-sm-4">
@@ -44,7 +45,7 @@
                         </div>
                        </div>
                             </div>
-
+               <% end%>
                             <div class="form-group row">
                            <%= f.label :zone_id, "Area:" , class:'col-sm-2'%>
                            <div class="col-sm-4">
@@ -104,7 +105,7 @@
                           <%= f.label :fecharegistro, class:'col-sm-2' %>
                              
                               <div class="col-sm-4">
-                              <%= f.date_field :fecharegistro , class:'form-control'%>
+                              <%= f.date_select :fecharegistro  , class:'form-control'%>
                               </div>
                           </div>
                           

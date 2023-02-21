@@ -16,6 +16,7 @@
 //=require_tree
 //= require moment
 //= require daterangepicker
+//= require bootstrap-datetimepicker
 
 
 

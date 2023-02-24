@@ -12,12 +12,17 @@
  <h4 class="text ">Mantenimiento <%= @maintenance.id %> </h4>
 </div>
  <div class="probar">
-<p style="color: green"><%= notice %></p>
+
 
 <div class="container">
      
 
-
+ <div class="form-group row">
+      <%= label :nombre, 'Nombre', class: 'col-sm-2'%>
+      <div class="col-sm-4">
+      <%= @maintenance.nombre%>
+      </div>
+      </div>
       
 
       <div class="form-group row">
@@ -80,7 +85,7 @@
       <div class="form-group row">
       <%= label :tool_id, 'Herramienta', class: 'col-sm-2'%>
       <div class="col-sm-4">
-      <%= @maintenance.tool.nombre%>
+      <%= @maintenance.tool.nombre%>  
       </div>
       </div>
 
@@ -100,7 +105,7 @@
 
   <%= link_to "Regresar ", maintenances_path, class: "btn btn-success btn-xs round" %>
    <% if can? :destroy, @maintenance%>
-  <%= link_to "Eliminar mantenimiento", @maintenance, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger"%>
+  <%= button_to "Eliminar mantenimiento", @maintenance, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger"%>
   <%end%>
 
 </div>

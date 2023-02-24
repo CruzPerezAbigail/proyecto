@@ -97,16 +97,9 @@ end
 gem "webpacker", "~> 5.4"
 
 gem 'popper_js', '~> 2.11', '>= 2.11.6'
-
-gem 'sprockets', '~> 4.1', '>= 4.1.1'
-
 gem 'jquery-rails'
 gem 'font_awesome5_rails'
 gem 'bootstrap', '~> 5.2', '>= 5.2.1'
-
-
-
-
 gem 'cancancan'
 
 gem 'jquery-datatables-rails'
@@ -117,3 +110,5 @@ gem "jquery-datatables", "~> 1.10"
 gem 'rails-i18n'
 gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
+gem 'bootstrap-datetimepicker-rails'
+gem 'bootstrap3-datetimepicker-rails'

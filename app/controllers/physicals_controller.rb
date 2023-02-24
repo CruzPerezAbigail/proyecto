@@ -52,7 +52,7 @@ class PhysicalsController < ApplicationController
     @physical.destroy
 
     respond_to do |format|
-      format.html { redirect_to physicals_url, notice: "El mantenimiento se ha eliminado correctamente." }
+      format.html { redirect_to physicals_url, notice: "El material se ha eliminado correctamente." }
       format.json { head :no_content }
     end
   end

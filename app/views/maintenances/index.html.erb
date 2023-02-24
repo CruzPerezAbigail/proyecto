@@ -4,7 +4,7 @@
 </head>
 <div align= "center">
 
-<p style="color: green" ><%=notice%></p>
+
 <h4>Mantenimiento</h4>
 
 <div class="col-lg-12 grid-margin stretch-card">
@@ -20,7 +20,7 @@
                   <table class="table table-bordered" id="tablaman">
                   <thead class="thead-blue" >
               <tr>
-              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
               <th scope="col">Fecha inicio</th>
               <th scope="col">Fecha fin </th>
               <th scope="col">Observaciones</th>
@@ -41,7 +41,7 @@
               
               <% @maintenances.each do |maintenance| %>
               <tr>
-              <td><%= maintenance.id %></td>
+              <td><%= maintenance.nombre %></td>
               <td><%= maintenance.fecha_inicio %></td>
               <td><%= maintenance.fecha_fin %></td>
               <td><%= maintenance.observaciones %></td>

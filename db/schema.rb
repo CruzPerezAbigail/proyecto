@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_210222) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_24_170843) do
   create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
@@ -59,11 +59,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_210222) do
     t.text "observaciones"
     t.string "tipo_mantenimiento"
     t.bigint "zone_id", null: false
-    t.bigint "physical_id"
-    t.bigint "tool_id"
-    t.bigint "resources_id"
-    t.string "usuarios_id"
+    t.bigint "physical_id", null: false
+    t.bigint "tool_id", null: false
+    t.bigint "resources_id", null: false
+    t.string "usuarios_id", null: false
     t.string "equipment_id"
+    t.string "nombre"
     t.index ["equipment_id"], name: "index_maintenances_on_equipment_id"
     t.index ["physical_id"], name: "index_maintenances_on_physical_id"
     t.index ["resources_id"], name: "index_maintenances_on_resources_id"

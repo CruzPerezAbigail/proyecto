@@ -25,7 +25,7 @@
                 <div class="hidden md:flex md:flex-col justify-center w-1/3 mr-12 pl-6"><img
                         src="https://blogger.googleusercontent.com/img/a/AVvXsEim6c3KT95s8Cn8FDEtmRQMLMRkOC0RTybqEk9WsgL0Xmb2k2lk_27MctrpMi-u3spXccC0QNvVaPJVn4FzX5I1jbueJHoDGI7Dqt2ruNF6e4bsX1mslYmZhWXEHze1pEj7WHggLlfm8NApU8llGhD5WaPAQqBVyYxWQTz3Lpt7R5KNG5Hk2nFG16QE" alt="MindBox" class="max-w-full"> <br>
                    
-                    <p class="text-center text-xs"><a href="https://mindbox.app" target="_blank">SICC</a><br>
+                    
                         
                     </p>
                 </div>
@@ -42,12 +42,12 @@
 
 
                         <%= f.label :Correo %><br />
-                        <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control form-control-usuario"%>
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email" , id: :email,class: "form-control form-control-usuario"%>
                       </div>
                     
                       <div class="form-group ">
                         <%= f.label :password %><br />
-                        <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-usuario" %>
+                        <%= f.password_field :password, autocomplete: "current-password",id: :password ,class: "form-control form-control-usuario" %>
                       </div>
                     
                       <% if devise_mapping.rememberable? %>
@@ -64,7 +64,7 @@
                         <%= f.submit "Ingresar", class: "btn btn-primary btn-usuario btn-block" %>
                       </div>
                     <% end %>
-                    <%= link_to 'Registrar', new_usuario_registration_path%>
+                    
 
                     
                 </div>

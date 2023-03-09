@@ -34,6 +34,7 @@ class Ability
         
                      alias_action :create, :read, :update, :to => :cru
                      can :cru, Solicitud
+
               end 
        end 
 end 

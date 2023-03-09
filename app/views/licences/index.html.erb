@@ -41,6 +41,7 @@
     <td><%= licences.anio %></td>
     <td><%= licences.num_licencia %></td>
  <td>
+              
               <a href="<%= edit_licence_path(licences)%>" class="edit"><i class="bi bi-pencil-square"></i></a>
                <a  class="mostrar"  <%= link_to ({:action => :show, :id => licences.id}) do %><i class="bi bi-eye-fill"></i><%end%></a>
                

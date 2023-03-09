@@ -13,18 +13,7 @@ class Usuarios::SessionsController < Devise::SessionsController
   # end 
 
   # # POST /resource/sign_in
-    def create
     
-       usuario = Usuario.find_by_email(email: params[:session][:email].downcase)
-  
-       if usuario && usuario.authenticate(params[:session][:password]) 
-         @current_usuario = usuario
-       else
-        flash[:danger]=  'correo electrónico o contraseña es invalida'
-        render :new 
-       end
-     end
-    end
 
   # DELETE /resource/sign_out
  # def destroy

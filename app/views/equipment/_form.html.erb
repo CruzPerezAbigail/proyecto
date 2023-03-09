@@ -14,7 +14,17 @@
     </div>
   <% end %>
 <br>
-  <div class="form-group row">
+                          <div class="form-group row">
+                            <%= f.label :shape_id ,'Tipo:', class:'col-sm-2' %>
+                             <div class="col-sm-4">
+                             <div class="placeholder">
+                             <%=f.collection_select(:shape_id, Shape.all{|a| [a.nombre]}, :id, :nombre, class:'form-control', prompt: "Selecione un tipo" )%>
+                                 </div> 
+                             </div>
+                             </div>
+
+
+                          <div class="form-group row">
                            <%= f.label :Modelo , class:'col-sm-2'%>
                            <div class="col-sm-4">
                            <%= f.text_field :modelo , class:'form-control'%>
@@ -36,6 +46,7 @@
                        </div>
                        </div>
               </div>
+              <% if false %>
                        <div class="form-group row">
                        <%= f.label :departament_id, "Departamento" , class:'col-sm-2'%>
                        <div class="col-sm-4">
@@ -44,7 +55,7 @@
                         </div>
                        </div>
                             </div>
-
+               <% end%>
                             <div class="form-group row">
                            <%= f.label :zone_id, "Area:" , class:'col-sm-2'%>
                            <div class="col-sm-4">
@@ -55,17 +66,6 @@
                            </div>
 
 
-                            <div class="form-group row">
-                            <%= f.label :shape_id ,'Tipo:', class:'col-sm-2' %>
-                             <div class="col-sm-4">
-                             <div class="placeholder">
-                             <%=f.collection_select(:shape_id, Shape.all{|a| [a.nombre]}, :id, :nombre, class:'form-control', prompt: "Selecione un tipo" )%>
-                                 </div> 
-                             </div>
-                             </div>
-
-                           
-           
                            
                               <div class="form-group row">
                               <%= f.label :estatus , "Estatus:" , class:'col-sm-2'%>
@@ -84,31 +84,61 @@
                           </div>
                           
 
-                          <div class="form-group row ">
-                          <%= f.label :RAM , class:'col-sm-2'%>
-                              <div class="col-sm-4">
-                              <%= f.text_field :ram , class:'form-control'%>
-                                 </div>
-                          </div>
-           
+                          <div id="1000" class="data"> 
+                        <div class="form-group row ">
+                        <%= f.label :RAM , class:'col-sm-2'%>
+                            <div class="col-sm-4">
+                            <%= f.text_field :ram , class:'form-control'%>
+                               </div>
+                        </div>
+         
 
-                          <div class="form-group row">
-                          <%= f.label :Disco_duro , class:'col-sm-2' %>
-                             
-                              <div class="col-sm-4">
-                              <%= f.text_field :disco_duro , class:'form-control'%>
-                              </div>
-                          </div>
+                        <div class="form-group row">
+                        <%= f.label :Disco_duro , class:'col-sm-2' %>
+                            <div class="col-sm-4">
+                            <%= f.text_field :disco_duro , class:'form-control'%>
+                            </div>
+                        </div>
+                  </div>
 
-                          <div class="form-group row">
-                          <%= f.label :fecharegistro, class:'col-sm-2' %>
-                             
-                              <div class="col-sm-4">
-                              <%= f.date_field :fecharegistro , class:'form-control'%>
-                              </div>
-                          </div>
+                  <div id="1001" class="data"> 
+                  <div class="form-group row ">
+                  <%= f.label :RAM , class:'col-sm-2'%>
+                      <div class="col-sm-4">
+                      <%= f.text_field :ram , class:'form-control'%>
+                         </div>
+                  </div>
+   
+
+                  <div class="form-group row">
+                  <%= f.label :Disco_duro , class:'col-sm-2' %>
+                     
+                      <div class="col-sm-4">
+                      <%= f.text_field :disco_duro , class:'form-control'%>
+                      </div>
+                  </div>
+            </div>
+
+            <div id="1007" class="data"> 
+                        <div class="form-group row ">
+                        <%= f.label :RAM , class:'col-sm-2'%>
+                            <div class="col-sm-4">
+                            <%= f.text_field :ram , class:'form-control'%>
+                               </div>
+                        </div>
+         
+
+                        <div class="form-group row">
+                        <%= f.label :Disco_duro , class:'col-sm-2' %>
+                           
+                            <div class="col-sm-4">
+                            <%= f.text_field :disco_duro , class:'form-control'%>
+                            </div>
+                        </div>
+                  </div>
                           
-                        
+                          
+              
                           <div class="form-group row">
                           <%= f.label :licence_id, "Licencia:"  , class:'col-sm-2'%>
                               <div class="col-sm-4">
@@ -118,6 +148,14 @@
                               </div>
                           </div> 
                         
+
+                        <div class="form-group row">
+                          <%= f.label :fecharegistro,'Fecha de registro', class:'col-sm-2' %>
+                             
+                              <div class="col-sm-4">
+                              <%= f.date_select :fecharegistro  , class:'form-control', min: Date.today%>
+                              </div>
+                          </div>
                         <br/>
                          <div>
                  <button type="submit" class="btn btn-info">Guardar</button>
@@ -135,3 +173,18 @@
               </form>
               <br>
               
+<script>
+              scr="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+              </script>
+
+
+              <script>
+
+              $(document).ready(function(){
+                $("#equipment_shape_id").on('change', function(){
+                  $(".data").hide();
+                  $("#"+ $(this).val()).fadeIn(100);
+                }).change();
+              });
+  
+                </script>

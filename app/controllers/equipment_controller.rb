@@ -60,6 +60,13 @@ class EquipmentController < ApplicationController
       format.html { redirect_to equipment_index_url, notice: "El equipo se ha eliminado correctamente." }
       format.json { head :no_content }
     end
+
+    def search
+      @query = params[:query]
+      @equipment = Equipment.where("equipment.serial LIKE ?",["%#{query}%"])
+      render "index"
+    end 
+
   end
 
   private

@@ -1,5 +1,5 @@
 class Physical < ApplicationRecord
          validates :nombre , :presence => true 
          validates :nombre, :uniqueness => true 
-         has_one :maintenance
+         has_many :maintenance
 end

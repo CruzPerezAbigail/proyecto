@@ -11,24 +11,36 @@
   <% end %>
 
   <br>
-                     <div class="form-group row">
-                           <%= f.label :Fecha_de_inicio, class:'col-sm-2'%>
-                           <div class="form-group col-sm-4">
-                           <%= f.datetime_local_field :fecha_inicio , class:'form-control'%>
+                   <div class="form-group row">
+                        <%= f.label :nombre, 'Nombre',  class:'col-sm-2'%>
+                            <div class="form-group col-sm-4" >
+
+                           <%= f.text_field :nombre, class:'form-control'%>
                            </div>
                     </div> 
+   
+                                         
+                        <div class="form-group row">
+                        <%= f.label :fecha_inicio,'Fecha de inicio', class:'col-sm-2'%>
+                            <div class="form-group col-sm-4" >
+
+                           <%= f.datetime_field :fecha_inicio ,value: @time_now, class:'form-control'%>
+                           </div>
+                    </div> 
+                     
 
                     <div class="form-group row">
                            <%= f.label :Fecha_de_termino , class:'col-sm-2'%>
-                           <div class="form-group col-sm-4">
-                           <%= f.datetime_local_field :fecha_fin , class:'form-control'%>
+                           <div class="form-group col-sm-4" >
+
+                           <%= f.datetime_field :fecha_fin , class:'form-control', min: Date.today%>
                            </div>
                     </div> 
 
                     <div class="form-group row">
                               <%= f.label :Observaciones , class:'col-sm-2'%>
                               <div class="form-group col-sm-4">
-                              <%= f.text_area :observaciones, size: "80x20", class:'form-control'%>
+                              <%= f.text_area :observaciones, size: "20x20",class:'form-control'%>
                               </div>
                     </div>
 
@@ -51,7 +63,7 @@
                        <%= f.label :zone_id, "Area" , class:'col-sm-2'%>
                        <div class="col-sm-4">
                        <div class="placeholder">
-                       <%= f.collection_select( :zone_id, Zone.all{|d| [d.nombre, d.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione el departamento")%>
+                       <%= f.collection_select( :zone_id, Zone.order('nombre'), :id, :nombre, class:'form-control', prompt:"Seleccione la área")%>
                         </div>
                        </div>
                             </div>
@@ -60,7 +72,7 @@
                        <%= f.label :physical_id, "Materiales" , class:'col-sm-2'%>
                        <div class="col-sm-4">
                        <div class="placeholder">
-                       <%= f.collection_select( :physical_id, Physical.all{|m| [m.nombre, m.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione el material")%>
+                       <%= f.collection_select( :physical_id, Physical.order('nombre'), :id, :nombre, class:'form-control', prompt:"Seleccione el material")%>
                         </div>
                        </div>
                             </div>
@@ -69,7 +81,7 @@
                        <%= f.label :tool_id, "Herramienta" , class:'col-sm-2'%>
                        <div class="col-sm-4">
                        <div class="placeholder">
-                       <%= f.collection_select( :tool_id, Tool.all{|h| [h.nombre, h.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione la herramienta")%>
+                       <%= f.collection_select( :tool_id, Tool.order('nombre'), :id, :nombre, class:'form-control', prompt:"Seleccione la herramienta")%>
                         </div>
                        </div>
                             </div>
@@ -80,18 +92,16 @@
                        <%= f.label :resources_id, "Insumo" , class:'col-sm-2'%>
                        <div class="col-sm-4">
                        <div class="placeholder">
-                       <%= f.collection_select(:resources_id, Resource.all{|i| [i.nombre, i.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione el insumo")%>
+                       <%= f.collection_select(:resources_id, Resource.order('nombre'), :id, :nombre, class:'form-control', prompt:"Seleccione el insumo")%>
                         </div>
                        </div>
                             </div>
 
                    <div class="form-group row">
                        <%= f.label :usuarios_id, "Usuario" , class:'col-sm-2'%>
-                       <div class="col-sm-4">
-                       <div class="placeholder">
-                       <%= f.collection_select( :usuarios_id, Usuario.all{|u| [u.nombre, u.id]}, :id, :nombre, class:'form-control', prompt:"Seleccione su usuario")%>
+                       <div class="col-sm-4" >
+                       <%= f.text_field :usuarios_id, value: @usuario_logiado , :readonly => true , class: "form-control-plaintext"%>
                         </div>
-                       </div>
                             </div>
                             
                          <%end %>
@@ -106,4 +116,6 @@
                           </div>
                           
 </form>
+
+
 

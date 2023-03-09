@@ -69,8 +69,10 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
-  gem 'factory_bot_rails', '~> 6.2'
+  gem 'factory_bot_rails'
   gem "capybara"
+  gem 'simplecov'
+  gem 'shoulda-matchers'
   
 end
 
@@ -97,16 +99,9 @@ end
 gem "webpacker", "~> 5.4"
 
 gem 'popper_js', '~> 2.11', '>= 2.11.6'
-
-gem 'sprockets', '~> 4.1', '>= 4.1.1'
-
 gem 'jquery-rails'
 gem 'font_awesome5_rails'
 gem 'bootstrap', '~> 5.2', '>= 5.2.1'
-
-
-
-
 gem 'cancancan'
 
 gem 'jquery-datatables-rails'
@@ -117,3 +112,5 @@ gem "jquery-datatables", "~> 1.10"
 gem 'rails-i18n'
 gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
+gem 'bootstrap-datetimepicker-rails'
+gem 'bootstrap3-datetimepicker-rails'

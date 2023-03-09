@@ -1,19 +1,20 @@
 <head>
 <%= stylesheet_link_tag "style" %>
 </head>
+<div class="container">
+<div class="card mt-5">
+<div class="card-header">
 <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="">Tipo</a></li>
           <li class="breadcrumb-item active"> Caracteristicas de Tipo</li>
         </ol>
-<div class="container">
-<div class="card mt-5">
-<div class="card-header">
 
-<h4 class="text">Nuevo Tipo <%= @shape.id %> </h4>
+
+<h4 class="text"> Tipo con identificador <%= @shape.id %> </h4>
 </div>
  <div class="probar">
 
-<p style="color: green"><%= notice %></p>
+
 
 <%= render @shape %>
 
@@ -22,6 +23,6 @@
   <%= link_to "Editar  tipo", edit_shape_path(@shape),  class: "btn btn-success" %> <%end%> |
   <%= link_to "Lista de tipos", shapes_path ,  class: "btn btn-success"%> |
 <%if can? :destroy, Shape%>
-  <%= link_to "Eliminar tipo", @shape, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger" %>
+  <%= button_to "Eliminar tipo", @shape, method: :delete , data: { confirm: "Esta seguro de eliminar"},  class: "btn btn-danger" %>
   <%end%>
 </div>

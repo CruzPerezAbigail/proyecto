@@ -1,13 +1,14 @@
 class Usuario < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable
   
  
-   # validates :id, format: { with: /[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})/, message: "Formato no compatible" }
+   validates :id, format: { with: /[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})/, message: "Formato no compatible" }
     validates :id, :uniqueness => true 
 
+    
     
 
     ROLES = %w[admin personal agente]
@@ -26,7 +27,7 @@ class Usuario < ApplicationRecord
    end 
    
     
-    belongs_to :maintenance
+   
       
 end 
 

@@ -14,7 +14,7 @@ class SolicitudsController < ApplicationController
   # GET /solicituds/new
   def new
     @solicitud = Solicitud.new
-    @time_now = Date.strptime('%Y-%m-%d')
+    
   end
 
   # GET /solicituds/1/edit

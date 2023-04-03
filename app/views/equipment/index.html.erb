@@ -38,7 +38,7 @@
             <tbody>
            
               <% @equipment.each do |equipment| %>
-                <tr>
+                <tr class="<%= 'new-equipment' if equipment.id == flash[:new_equipment_id] %>">
                 
                 <td></td>
                   <td><%= equipment.id %></td>
@@ -82,13 +82,14 @@
                 </div>
               </div>
             </div>
-
+        
 <script>
             $(document).ready(function() {
               var oTable = $("#equipostabla").DataTable({
                 language: {
                   url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/es-MX.json'
               },
+              
              order: [[1, 'asc']],
           responsive: "true",
           dom: 'Bfrtilp',    
@@ -127,8 +128,21 @@
         } );
     } ).draw();
             }); 
+            </script>
 
-                
+            
+            <script>
+            $(document).ready(function() {
+  var newEquipmentId = '<%= j flash[:new_equipment_id] %>';
+  if (newEquipmentId) {
+    var newEquipmentRow = document.getElementById('equipment-' + newEquipmentId);
+    if (newEquipmentRow) {
+      newEquipmentRow.classList.add('highlight');
+      newEquipmentRow.scrollIntoView({ behavior: "smooth", block: "center" });
+      newEquipmentRow.focus();
+    }
+  }
+});
             </script>
 
 

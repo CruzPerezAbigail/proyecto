@@ -4,8 +4,10 @@ class EquipmentController < ApplicationController
 
   # GET /equipment or /equipment.json
   def index
-   @equipment = Equipment.all
+   @equipment = Equipment.all.order(:id)
+   #@new_equipment_id = flash[:new_equipment_id]
   # @equipment= Equipment.get_mantenimientos  
+  
   end
 
   # GET /equipment/1 or /equipment/1.json
@@ -29,7 +31,8 @@ class EquipmentController < ApplicationController
 
     respond_to do |format|
       if @equipment.save
-        
+        flash[:new_equipment_id] = @equipment.id
+       
         format.html { redirect_to equipment_index_url, notice: "El equipo de ha creado correctamente." }
         format.json { render :show, status: :created, location: @equipment }
       else

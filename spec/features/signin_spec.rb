@@ -1,5 +1,6 @@
 
 require "rails_helper"
+
 RSpec.feature "the signin process", :type => :feature do
   before :each do
     Usuario.create(:email => "abigail07cruz@gmail.com", :password => "123456789")

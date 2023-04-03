@@ -100,8 +100,6 @@
                             </div>
                         </div>
                   </div>
-
-<<<<<<< HEAD
                   <div id="1001" class="data"> 
                   <div class="form-group row ">
                   <%= f.label :RAM , class:'col-sm-2'%>
@@ -137,7 +135,7 @@
                             </div>
                         </div>
                   </div>
-=======
+
                           <div class="form-group row">
                           <%= f.label :fecharegistro, class:'col-sm-2' %>
                              
@@ -145,7 +143,7 @@
                               <%= f.date_select :fecharegistro  , class:'form-control', min: Date.today%>
                               </div>
                           </div>
->>>>>>> b1d9c64d8c3259c29bf745b9af2c1699641c38bb
+
                           
                           
               
@@ -159,15 +157,7 @@
                           </div> 
                         
 
-                        <div class="form-group row">
-                          <%= f.label :fecharegistro,'Fecha de registro', class:'col-sm-2' %>
-                             
-                              <div class="col-sm-4">
-                              <%= f.date_select :fecharegistro  , class:'form-control', min: Date.today%>
-                              </div>
-                          </div>
-                        <br/>
-                         <div>
+                        
                  <button type="submit" class="btn btn-info">Guardar</button>
                  <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
            

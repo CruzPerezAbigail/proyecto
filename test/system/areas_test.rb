@@ -5,6 +5,7 @@ class AreasTest < ApplicationSystemTestCase
     @area = areas(:one)
   end
 
+  
   test "visiting the index" do
     visit areas_url
     assert_selector "h1", text: "Areas"

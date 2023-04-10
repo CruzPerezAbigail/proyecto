@@ -21,10 +21,10 @@
    
                                          
                         <div class="form-group row">
-                        <%= f.label :fecha_inicio,'Fecha de inicio', class:'col-sm-2'%>
+                        <%= f.label :fecha_inicio,'Fecha de inicio', hidden: true,  class:'col-sm-2'%>
                             <div class="form-group col-sm-4" >
 
-                           <%= f.datetime_field :fecha_inicio ,value: @time_now, class:'form-control'%>
+                           <%= f.datetime_field :fecha_inicio , hidden: true, value: @time_now, class:'form-control'%>
                            </div>
                     </div> 
                      
@@ -98,9 +98,9 @@
                             </div>
 
                    <div class="form-group row">
-                       <%= f.label :usuarios_id, "Usuario" , class:'col-sm-2'%>
+                       <%= f.label :usuarios_id, "Usuario" ,  hidden: true, class:'col-sm-2'%>
                        <div class="col-sm-4" >
-                       <%= f.text_field :usuarios_id, value: @usuario_logiado , :readonly => true , class: "form-control-plaintext"%>
+                       <%= f.hidden_field :usuarios_id, value: @usuario_logiado , :readonly => true , class: "form-control-plaintext"%>
                         </div>
                             </div>
                             

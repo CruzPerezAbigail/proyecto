@@ -26,9 +26,9 @@
                            </div>
 
   <div class="form-group row">
-    <%= form.label :fecha,"Fecha", class:'col-sm-2'%>
+    <%= form.label :fecha,"Fecha", hidden: true,class:'col-sm-2'%>
      <div class="col-sm-4">
-    <%= form.date_field :fecha , min: Date.today%>
+    <%= form.date_field :fecha, value: @fecha_actual, hidden: true%>
   </div>
   </div>
 <br>
@@ -39,17 +39,17 @@
   </div>
   </div>
 <br>
-   <div class="form-group row">
-                       <%= form.label :usuarios_id , "Usuario" , class:'col-sm-2'%>
-                       <div class="col-sm-4">
-                       <div class="placeholder">
-                       <%= form.collection_select(:usuarios_id, Usuario.all{|u| [u.nombre, u.rfc]}, :id, :nombre, class:'form-control', prompt:"Seleccione su usuario")%>
-                        </div>
-                       </div>
-                            </div>
+                            <div class="form-group row">
+                            <%= form.label :usuarios_id , "Usuario" , class:'col-sm-2'%>
+                            <div class="col-sm-4">
+                              <%= form.text_field :usuarios_id, value: @logeo , :readonly => true , class: "form-control-plaintext"%>
+                              </div>
+                              </div>
 
   <div>
-   <button class="btn btn-info" <%= form.submit %> Guardar </button>
-  <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
-  </div>
-<% end %>
+                 <button type="submit" class="btn btn-info">Guardar</button>
+                 <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+                
+                          </div>
+<%end%> 
+</form>

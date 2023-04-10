@@ -59,7 +59,7 @@ gem 'jquery-rails'
 gem 'font_awesome5_rails'
 gem 'bootstrap', '~> 5.2', '>= 5.2.1'
 
-gem 'cancancan'
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -115,3 +115,5 @@ gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
 gem 'bootstrap-datetimepicker-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'paper_trail'
+gem 'notifiable-rails'

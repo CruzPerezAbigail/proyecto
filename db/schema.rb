@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_24_170843) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_07_234015) do
   create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
@@ -36,26 +36,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_170843) do
     t.bigint "zone_id", null: false
     t.bigint "brand_id", null: false
     t.bigint "shape_id", null: false
-    t.bigint "licence_id", null: false
+    t.bigint "licence_id"
     t.index ["brand_id"], name: "index_equipment_on_brand_id"
     t.index ["departament_id"], name: "index_equipment_on_departament_id"
+    t.index ["id"], name: "id_UNIQUE", unique: true
     t.index ["licence_id"], name: "index_equipment_on_licence_id"
     t.index ["shape_id"], name: "index_equipment_on_shape_id"
     t.index ["zone_id"], name: "index_equipment_on_zone_id"
   end
 
-  create_table "herramienta", primary_key: "id_herramienta", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.string "caracteristicas"
-    t.integer "existencia"
-    t.string "estatus"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "licences", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
-    t.integer "anio"
+    t.date "anio"
     t.string "num_licencia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -70,18 +62,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_170843) do
     t.bigint "physical_id", null: false
     t.bigint "tool_id", null: false
     t.bigint "resources_id", null: false
-<<<<<<< HEAD
-    t.string "equipment_id", null: false
-=======
     t.string "usuarios_id", null: false
     t.string "equipment_id"
->>>>>>> b1d9c64d8c3259c29bf745b9af2c1699641c38bb
     t.string "nombre"
     t.index ["equipment_id"], name: "index_maintenances_on_equipment_id"
     t.index ["physical_id"], name: "index_maintenances_on_physical_id"
     t.index ["resources_id"], name: "index_maintenances_on_resources_id"
     t.index ["tool_id"], name: "index_maintenances_on_tool_id"
+    t.index ["usuarios_id"], name: "index_maintenances_on_usuarios_id"
     t.index ["zone_id"], name: "index_maintenances_on_zone_id"
+  end
+
+  create_table "notifiable_apps", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "physicals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -92,11 +87,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_170843) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reportes", id: :bigint, default: nil, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "reportes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "fecha"
     t.text "observaciones"
     t.string "tipo_problema"
-    t.integer "id_mantenimiento"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "maintenances_id", null: false
@@ -118,7 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_170843) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "solicituds", id: :bigint, default: nil, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "solicituds", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "fecha"
     t.text "descripcion"
     t.datetime "created_at", null: false
@@ -155,6 +149,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_170843) do
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
+  create_table "versions", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "item_type", limit: 191, null: false
+    t.bigint "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object", size: :long
+    t.datetime "created_at"
+    t.string "ip"
+    t.string "usuario"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
   create_table "zones", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
@@ -172,6 +178,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_170843) do
   add_foreign_key "maintenances", "physicals"
   add_foreign_key "maintenances", "resources", column: "resources_id"
   add_foreign_key "maintenances", "tools"
+  add_foreign_key "maintenances", "usuarios", column: "usuarios_id"
   add_foreign_key "maintenances", "zones"
   add_foreign_key "reportes", "maintenances", column: "maintenances_id"
   add_foreign_key "solicituds", "usuarios", column: "usuarios_id"

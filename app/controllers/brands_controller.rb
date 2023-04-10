@@ -49,13 +49,19 @@ class BrandsController < ApplicationController
 
   # DELETE /brands/1 or /brands/1.json
   def destroy
-    @brand.destroy
+    @brand = Brand.find(params[:id])
 
-    respond_to do |format|
-      format.html { redirect_to brands_url, notice: "Marca fue eliminada con éxito." }
-      format.json { head :no_content }
+    begin
+      @brand.destroy
+      flash[:success] = "Marca fue eliminada con éxito." 
+
+    rescue ActiveRecord::InvalidForeignKey
+      flash[:error] = "Esta marca tiene relacion con equipos y no se puede eliminar"
     end
-  end
+    redirect_to brands_path
+      
+    end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

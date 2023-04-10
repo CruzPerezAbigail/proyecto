@@ -1,0 +1,23 @@
+
+<div class="dropdown">
+  <a class="dropdown-toggle" href="#" role="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="fa fa-bell"></i>
+    <% if current_usuario.notifications.unread.count > 0 %>
+      <span class="badge bg-danger">
+        <%= current_usuario.notifications.unread.count %>
+      </span>
+    <% end %>
+  </a>
+
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
+    <% current_usuario.notifications.unread.each do |notification| %>
+      <li>
+        <%= link_to notification.message, notification.path %>
+      </li>
+    <% end %>
+
+    <% if current_usuario.notifications.unread.count == 0 %>
+      <li><%= link_to 'No tienes notificaciones pendientes', '#' %></li>
+    <% end %>
+  </ul>
+</div>

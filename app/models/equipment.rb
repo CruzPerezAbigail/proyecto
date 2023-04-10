@@ -1,4 +1,5 @@
 class Equipment < ApplicationRecord
+         has_paper_trail
          belongs_to :shape, autosave: true
         
          belongs_to :zone, autosave: true

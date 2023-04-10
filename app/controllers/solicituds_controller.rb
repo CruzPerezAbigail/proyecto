@@ -14,7 +14,9 @@ class SolicitudsController < ApplicationController
   # GET /solicituds/new
   def new
     @solicitud = Solicitud.new
-    
+    @fecha_actual = Date.today
+
+    @logeo= current_usuario.id
   end
 
   # GET /solicituds/1/edit
@@ -24,9 +26,10 @@ class SolicitudsController < ApplicationController
   # POST /solicituds or /solicituds.json
   def create
     @solicitud = Solicitud.new(solicitud_params)
-
+    
     respond_to do |format|
       if @solicitud.save
+        
         format.html { redirect_to solicitud_url(@solicitud), notice: "Solicitud se ha registrado correctamente." }
         format.json { render :show, status: :created, location: @solicitud }
       else
